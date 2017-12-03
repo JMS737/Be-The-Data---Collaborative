@@ -40,6 +40,12 @@ namespace DataVis.Collaboration
             PhotonNetwork.LeaveRoom();
         }
 
+        public void Quit()
+        {
+            PhotonNetwork.Disconnect();
+            Application.Quit();
+        }
+
         public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
         {
             Debug.Log("GameManager: Player connected.");
