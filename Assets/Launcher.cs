@@ -13,6 +13,7 @@ namespace DataVis.Collaboration
         public Text statusText;
 
         private string _gameVersion = "1.0";
+        private bool isConnecting;
 
         private void Awake()
         {
@@ -30,6 +31,7 @@ namespace DataVis.Collaboration
 
         public void Connect()
         {
+            isConnecting = true;
             if (PhotonNetwork.connected)
             {
                 statusText.text = "Attempting to join room...";
@@ -45,7 +47,11 @@ namespace DataVis.Collaboration
         {
             statusText.text = "Connected to server...";
             Debug.Log("Launcher: OnConnectedToMaster() called.");
-            PhotonNetwork.JoinRandomRoom();
+
+            if (isConnecting)
+            {
+                PhotonNetwork.JoinRandomRoom();
+            }
         }
 
         public override void OnDisconnectedFromPhoton()
@@ -64,6 +70,8 @@ namespace DataVis.Collaboration
         {
             statusText.text = "Room joined successfully...";
             Debug.Log("Launcher: OnJoinedRoom() called.");
+
+            PhotonNetwork.LoadLevel("Main");
         }
     }
 }

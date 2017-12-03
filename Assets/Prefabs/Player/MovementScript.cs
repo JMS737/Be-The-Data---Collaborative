@@ -15,7 +15,7 @@ namespace DataVis.Collaboration
         private GameObject selectedDataPoint;
 
         // Collider used when moving only, otherwise disabled to let ray tracer out
-        BoxCollider playerCollider;
+        CapsuleCollider playerCollider;
 
         // Daydream controller variables
         private bool isScrolling;
@@ -41,7 +41,7 @@ namespace DataVis.Collaboration
         void Start()
         {
             //createSphereGrid = GameObject.FindGameObjectWithTag ("GridObject").GetComponent<CreateSphereGrid>();
-            playerCollider = this.gameObject.GetComponentInParent<BoxCollider>();
+            playerCollider = this.gameObject.GetComponentInParent<CapsuleCollider>();
         }
 
         // Update every frame
