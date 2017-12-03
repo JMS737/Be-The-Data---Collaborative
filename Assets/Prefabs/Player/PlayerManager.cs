@@ -2,45 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : Photon.PunBehaviour {
-
-    public static GameObject LocalPlayerInstance;
-
-    public GameObject Reticle;
-
-
-    private void Awake()
+namespace DataVis.Collaboration
+{
+    public class PlayerManager : Photon.PunBehaviour
     {
-        if (photonView.isMine)
+
+        public static GameObject LocalPlayerInstance;
+
+        public GameObject Reticle;
+
+
+        private void Awake()
         {
-            PlayerManager.LocalPlayerInstance = this.gameObject;
+            if (photonView.isMine)
+            {
+                PlayerManager.LocalPlayerInstance = this.gameObject;
+            }
+
+            DontDestroyOnLoad(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    // Use this for initialization
-    void Start () {
-        if (photonView.isMine)
+        // Use this for initialization
+        void Start()
         {
-            // Enable scripts on the camera.
-            GetComponentInChildren<Camera>().enabled = true;
-            GetComponentInChildren<FlareLayer>().enabled = true;
-            GetComponentInChildren<AudioListener>().enabled = true;
-            GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-            GetComponentInChildren<MovementScript>().enabled = true;
+            if (photonView.isMine)
+            {
+                // Enable scripts on the camera.
+                GetComponentInChildren<Camera>().enabled = true;
+                GetComponentInChildren<FlareLayer>().enabled = true;
+                GetComponentInChildren<AudioListener>().enabled = true;
+                GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
+                GetComponentInChildren<MovementScript>().enabled = true;
 
-            // Enable scripts on the controller.
+                // Enable scripts on the controller.
 
-            GetComponentInChildren<GvrArmModel>().enabled = true;
-            GetComponentInChildren<GvrTrackedController>().enabled = true;
+                GetComponentInChildren<GvrArmModel>().enabled = true;
+                GetComponentInChildren<GvrTrackedController>().enabled = true;
 
-            Reticle.SetActive(true);
+                Reticle.SetActive(true);
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
+
