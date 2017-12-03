@@ -50,6 +50,7 @@ namespace DataVis.Collaboration
 
             if (isConnecting)
             {
+                statusText.text = "Attempting to join room...";
                 PhotonNetwork.JoinRandomRoom();
             }
         }
@@ -61,7 +62,7 @@ namespace DataVis.Collaboration
 
         public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
         {
-            statusText.text = "No room found. Creating new room...";
+            statusText.text = "Creating new room...";
             Debug.Log("Launcher: OnPhotonRandomJoinFailed() was called. No rooms available.\nCreating room...");
             PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = MaxPlayersPerRoom }, null);
         }
