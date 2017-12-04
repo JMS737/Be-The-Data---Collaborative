@@ -8,6 +8,7 @@ namespace DataVis.Collaboration
     public class GameManager : Photon.PunBehaviour
     {
         public GameObject playerPrefab;
+        public GraphManager graphManager;
 
         private void Start()
         {
@@ -21,18 +22,14 @@ namespace DataVis.Collaboration
                 if (PlayerManager.LocalPlayerInstance == null)
                 {
                     Debug.Log("Instantiating Local Player...");
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0.0f, 1.6f, 0.0f), Quaternion.identity, 0);
+                    Vector3 spawnPoint = graphManager.GetSpawnPoint();
+                    PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint, Quaternion.identity, 0);
                 }
                 else
                 {
                     Debug.Log("Ignoring scene load.");
                 }
             }
-        }
-
-        public override void OnLeftRoom()
-        {
-            SceneManager.LoadScene(0);
         }
 
         public void LeaveRoom()
@@ -44,6 +41,13 @@ namespace DataVis.Collaboration
         {
             PhotonNetwork.Disconnect();
             Application.Quit();
+        }
+
+        #region Photon Callbacks
+
+        public override void OnLeftRoom()
+        {
+            SceneManager.LoadScene(0);
         }
 
         public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
@@ -69,6 +73,8 @@ namespace DataVis.Collaboration
                 //LoadScene();
             }
         }
+
+        #endregion
     }
 }
 
