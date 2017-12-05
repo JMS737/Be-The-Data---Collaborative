@@ -6,9 +6,9 @@ namespace DataVis.Collaboration
     public class Axes : MonoBehaviour
     {
 
-        public int xSize = 5;
-        public int ySize = 5;
-        public int zSize = 5;
+        private int xSize = 5;
+        private int ySize = 5;
+        private int zSize = 5;
 
         private GameObject xAxis;
         private GameObject yAxis;
@@ -20,9 +20,9 @@ namespace DataVis.Collaboration
         {
 
             // Set local sizes
-            this.xSize = x;
-            this.ySize = y;
-            this.zSize = z;
+            xSize = x;
+            ySize = y;
+            zSize = z;
 
             // Set the grid's gameobjects to manipulate
             xAxis = this.gameObject.transform.GetChild(0).gameObject;

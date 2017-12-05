@@ -462,6 +462,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4303420883a4240a8a230aee93f5caef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DataPointPrefab: {fileID: 1131894251501358, guid: e8b6229d4595ca44d85800e84b7ed09a,
+    type: 2}
+  data: {fileID: 4900000, guid: 8d32b889593f12b4d9f4788638fea8f9, type: 3}
+  axes: {fileID: 114878616023946598}
+  participantIndex: 0
+  attributeIndexForY: 9
+  attributeIndexForZ: 11
 --- !u!114 &114878616023946598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,6 +480,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272160ed1f3495142be4e50100eeb9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 5
-  ySize: 5
-  zSize: 5

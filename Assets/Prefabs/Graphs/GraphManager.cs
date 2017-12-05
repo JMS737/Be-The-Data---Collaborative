@@ -13,8 +13,6 @@ namespace DataVis.Collaboration
     // Use this for initialization
         void Start()
         {
-            axes = GetComponentInChildren<Axes>();
-            axes.renderGrid(10, 10, 10);
             UpdateSpawnPoint(5f, 5f, -2f);
         }
 
