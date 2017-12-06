@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65315905466282000}
   - component: {fileID: 23718472047918486}
   m_Layer: 0
-  m_Name: xGrid
+  m_Name: xzGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 65027837272707972}
   - component: {fileID: 23470120117540430}
   m_Layer: 0
-  m_Name: zGrid_left
+  m_Name: zyGrid_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 65943325345653494}
   - component: {fileID: 23564954818714890}
   m_Layer: 0
-  m_Name: yGrid
+  m_Name: xyGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 65303573480308428}
   - component: {fileID: 23446198305217318}
   m_Layer: 0
-  m_Name: zGrid_right
+  m_Name: zyGrid_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
