@@ -5,41 +5,26 @@ using UnityEngine;
 
 namespace DataVis.Collaboration
 {
-    public class DataManager : MonoBehaviour
+    public class DataSet : MonoBehaviour
     {
-        [Tooltip("The prefab to be used for the data points.")]
-        public GameObject DataPointPrefab;
+        //[Tooltip("The prefab to be used for the data points.")]
+        //public GameObject DataPointPrefab;
 
-        [Tooltip("JSON file containing the participant data.")]
+        //[Tooltip("JSON file containing the participant data.")]
         //public TextAsset data;
-        //public Axes axes;
         //public int participantIndex = 0;
         //public int attributeIndexForY = 9;
         //public int attributeIndexForZ = 11;
 
+        public Vector3 MaxValues { get; set; }
+
         //private ParticipantDatabase database;
         private List<GameObject> dataPoints;
 
-        private float scale = 1;
-        private bool down = true;
-
-        private Vector3 maxValues = new Vector3();
-        public Vector3 MaxValues { get; set; }
-
-        // Use this for initialization
-        void Start()
+        public void LoadData(string dataAssetName, int participantIndex, int attributeIndexForY, int attributeIndexForZ, GameObject dataPointPrefab)
         {
-            
-        }
-
-        private void Update()
-        {
-            
-        }
-
-        public void LoadData(ParticipantDatabase database, int participantIndex, int attributeIndexForY, int attributeIndexForZ)
-        {
-            //database = JsonUtility.FromJson<ParticipantDatabase>(data.text);
+            TextAsset data = Resources.Load(dataAssetName) as TextAsset;
+            ParticipantDatabase database = JsonUtility.FromJson<ParticipantDatabase>(data.text);
             dataPoints = new List<GameObject>();
 
             int maxLength = Math.Min(
@@ -67,18 +52,24 @@ namespace DataVis.Collaboration
                     maxZ = Math.Max(position.z, maxZ);
                     
 
-                    GameObject newPoint = Instantiate(DataPointPrefab, position, Quaternion.identity, this.transform);
+                    GameObject newPoint = Instantiate(dataPointPrefab, position, Quaternion.identity, this.transform);
                     newPoint.GetComponent<DataPoint>().id = i;
                     newPoint.GetComponent<DataPoint>().SetLabels(pairY.date, pairY.value + " Hours", pairZ.value + " Hours");
                     newPoint.GetComponent<DataPoint>().values = position;
                     dataPoints.Add(newPoint);
                 }
             }
-            Debug.Log("x=" + maxX.ToString() + " y=" + maxY.ToString() + "z=" + maxZ.ToString());
-            maxValues.x = maxX;
-            maxValues.y = maxY;
-            maxValues.z = maxZ;
+            Debug.Log("x=" + maxX.ToString() + " y=" + maxY.ToString() + " z=" + maxZ.ToString());
+            MaxValues = new Vector3(maxX, maxY, maxZ);
             //axes.renderGrid((int)Math.Ceiling(maxX), (int)Math.Ceiling(maxY), (int)Math.Ceiling(maxZ));
+        }
+
+        public void ScaleData(float x, float y, float z)
+        {
+            for (int i = 0; i < dataPoints.Count; i++)
+            {
+                dataPoints[i].GetComponent<DataPoint>().SetAxisScale(x, y, z);
+            }
         }
     }
 

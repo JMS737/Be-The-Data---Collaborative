@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23225763379468280}
   - component: {fileID: 114266713550070964}
   m_Layer: 0
-  m_Name: Data Point
+  m_Name: Data Point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9424b841459c1da48a2ba31ff40fbc76, type: 2}
+  - {fileID: 2100000, guid: 375bb5c1fc2652443b05a826156fe67a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -115,22 +115,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1754920275794820
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4697484771924256}
-  - component: {fileID: 114287757922246036}
-  m_Layer: 0
-  m_Name: Data
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &4161216393407582
 Transform:
   m_ObjectHideFlags: 1
@@ -157,19 +141,6 @@ Transform:
   m_Father: {fileID: 4941040548396952}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4697484771924256
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754920275794820}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4711980674171020}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4711980674171020
 Transform:
   m_ObjectHideFlags: 1
@@ -181,7 +152,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4941040548396952}
-  - {fileID: 4697484771924256}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -451,24 +421,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3087abbc0778cb74f8d56ddbc0b18220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114287757922246036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754920275794820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4303420883a4240a8a230aee93f5caef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DataPointPrefab: {fileID: 1131894251501358, guid: e8b6229d4595ca44d85800e84b7ed09a,
+  dataSetPrefab: {fileID: 1402656214003882, guid: 59707d88fca5ff44284ccc2bd94a23ec,
     type: 2}
-  data: {fileID: 4900000, guid: 8d32b889593f12b4d9f4788638fea8f9, type: 3}
-  axes: {fileID: 114878616023946598}
-  participantIndex: 0
-  attributeIndexForY: 9
-  attributeIndexForZ: 11
+  dataPointPrefabs:
+  - {fileID: 1131894251501358, guid: e8b6229d4595ca44d85800e84b7ed09a, type: 2}
+  - {fileID: 1131894251501358, guid: 3bbb44240ae7e774ca8378ff8622f332, type: 2}
 --- !u!114 &114878616023946598
 MonoBehaviour:
   m_ObjectHideFlags: 1
