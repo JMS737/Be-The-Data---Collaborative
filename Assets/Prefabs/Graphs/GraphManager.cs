@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace DataVis.Collaboration
 {
+    /**
+     * Note: Datasets currently assume that dates align within the data 
+     */
     public class GraphManager : MonoBehaviour
     {
         public GameObject dataSetPrefab;
@@ -26,13 +29,18 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
-            UpdateSpawnPoint(5f, 5f, -2f);
-            axes = GetComponentInChildren<Axes>();
+            StartCoroutine("WaitAndLoad");
+        }
 
+        IEnumerator WaitAndLoad()
+        {
+            yield return new WaitForSeconds(0.01f);
             AddDataSet("data", 0, 9, 11, dataPointPrefabs[0]);
             AddDataSet("data", 2, 9, 11, dataPointPrefabs[1]);
+            axes = GetComponentInChildren<Axes>();
             SetMaxGridSize();
         }
+
 
         public void AddDataSet(string dataAssetName, int participant, int indexY, int indexZ, GameObject dataPointPrefab)
         {
@@ -52,7 +60,8 @@ namespace DataVis.Collaboration
                 maxY = Math.Max(maxY, dataSetMaxValues.y);
                 maxZ = Math.Max(maxZ, dataSetMaxValues.z);
             }
-            axes.renderGrid((int)Math.Ceiling(maxX), (int)Math.Ceiling(maxY), (int)Math.Ceiling(maxZ));
+            axes.renderGrid((float)Math.Ceiling(maxX), (float)Math.Ceiling(maxY), (float)Math.Ceiling(maxZ));
+            UpdateSpawnPoint(maxX / 2.0f, maxY / 2.0f, -3f);
         }
 
         private void Update()

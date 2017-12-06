@@ -12,13 +12,19 @@ namespace DataVis.Collaboration
 
         private void Start()
         {
+            StartCoroutine("WaitAndSpawn");
+        }
+
+        IEnumerator WaitAndSpawn()
+        {
+            yield return new WaitForSeconds(0.05f);
             if (playerPrefab == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference.");
             }
             else
             {
-                
+
                 if (PlayerManager.LocalPlayerInstance == null)
                 {
                     Debug.Log("Instantiating Local Player...");
