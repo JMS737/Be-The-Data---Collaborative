@@ -44,6 +44,11 @@ namespace DataVis.Collaboration
             zyGrid_left.GetComponent<Renderer>().material.mainTextureScale = new Vector2(z, y);
             zyGrid_right.GetComponent<Renderer>().material.mainTextureScale = new Vector2(z, y);
         }
+
+        public void ScaleAxes(float x, float y, float z)
+        {
+            transform.localScale = new Vector3(x, y, z);
+        }
     }
 }
 

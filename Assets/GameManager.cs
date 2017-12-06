@@ -8,6 +8,8 @@ namespace DataVis.Collaboration
     public class GameManager : Photon.PunBehaviour
     {
         public GameObject playerPrefab;
+
+        [Tooltip("The graph object the player should spawn by.")]
         public GraphManager graphManager;
 
         private void Start()

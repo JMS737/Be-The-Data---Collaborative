@@ -10,7 +10,10 @@ namespace DataVis.Collaboration
      */
     public class GraphManager : MonoBehaviour
     {
+        [Tooltip("Reference to the DataSet prefab. This is used to instantiate datasets at runtime.")]
         public GameObject dataSetPrefab;
+
+        [Tooltip("Prefabs to be used for datasets.\nNote: Prefabs will be reused if the number of datasets exceeds number of prefabs specified.")]
         public List<GameObject> dataPointPrefabs;
 
         private List<DataSet> dataSets = new List<DataSet>();
@@ -22,10 +25,7 @@ namespace DataVis.Collaboration
         private float scaleFactorX = 1;
         private float scaleFactorY = 1;
         private float scaleFactorZ = 1;
-
-        //private float scale = 1;
-        //private bool down = true;
-
+        
         // Use this for initialization
         void Start()
         {
@@ -35,19 +35,28 @@ namespace DataVis.Collaboration
         IEnumerator WaitAndLoad()
         {
             yield return new WaitForSeconds(0.01f);
-            AddDataSet("data", 0, 9, 11, dataPointPrefabs[0]);
-            AddDataSet("data", 2, 9, 11, dataPointPrefabs[1]);
-            AddDataSet("data", 4, 9, 11, dataPointPrefabs[2]);
+            AddDataSet("data", 0, 9, 11);
+            AddDataSet("data", 2, 9, 11);
+            AddDataSet("data", 4, 9, 11);
             axes = GetComponentInChildren<Axes>();
             SetMaxGridSize();
         }
 
 
-        public void AddDataSet(string dataAssetName, int participant, int indexY, int indexZ, GameObject dataPointPrefab)
+        public void AddDataSet(string dataAssetName, int participant, int indexY, int indexZ)
         {
-            GameObject newDataSet = Instantiate(dataSetPrefab, this.transform);
-            newDataSet.GetComponent<DataSet>().LoadData(dataAssetName, participant, indexY, indexZ, dataPointPrefab);
-            dataSets.Add(newDataSet.GetComponent<DataSet>());
+            GameObject nextDataPointPrefab = GetNextDataPointPrefab();
+
+            GameObject newDataSetObj = Instantiate(dataSetPrefab, this.transform);
+            DataSet newDataSet = newDataSetObj.GetComponent<DataSet>();
+            newDataSet.LoadData(dataAssetName, participant, indexY, indexZ, nextDataPointPrefab);
+
+            dataSets.Add(newDataSet);
+        }
+
+        private GameObject GetNextDataPointPrefab()
+        {
+            return dataPointPrefabs[dataSets.Count % dataPointPrefabs.Count];
         }
 
         private void SetMaxGridSize()
@@ -67,25 +76,7 @@ namespace DataVis.Collaboration
 
         private void Update()
         {
-            //if (down)
-            //{
-            //    scale -= Time.deltaTime / 5.0f;
 
-            //    if (scale < 0.1)
-            //    {
-            //        down = false;
-            //    }
-            //}
-            //else
-            //{
-            //    scale += Time.deltaTime / 5.0f;
-
-            //    if (scale > 2)
-            //    {
-            //        down = true;
-            //    }
-            //}
-            //SetScale(x: scale);
         }
 
         void UpdateSpawnPoint(float x, float y, float z)
@@ -119,7 +110,12 @@ namespace DataVis.Collaboration
 
         private void UpdateScale()
         {
-            
+            axes.ScaleAxes(scaleFactorX, scaleFactorY, scaleFactorZ);
+            for (int i = 0; i < dataSets.Count; i++)
+            {
+                dataSets[i].ScaleData(scaleFactorX, scaleFactorY, scaleFactorZ);
+            }
+            //transform.localScale = new Vector3(scaleFactorX, scaleFactorY, scaleFactorZ);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace DataVis.Collaboration
                 Vector3 position;
                 if (float.TryParse(pairY.value, out position.y) && float.TryParse(pairZ.value, out position.z))
                 {
-                    position.x = (float)i;
+                    position.x = i;
                     position.y /= 60;
                     position.z /= 60;
 
