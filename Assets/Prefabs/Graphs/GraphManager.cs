@@ -21,6 +21,7 @@ namespace DataVis.Collaboration
         private Vector3 spawnPoint;
 
         private Axes axes;
+        private LabelManager labelManager;
 
         private float scaleFactorX = 1;
         private float scaleFactorY = 1;
@@ -35,10 +36,14 @@ namespace DataVis.Collaboration
         IEnumerator WaitAndLoad()
         {
             yield return new WaitForSeconds(0.01f);
+
+            axes = GetComponentInChildren<Axes>();
+            labelManager = GetComponentInChildren<LabelManager>();
+
             AddDataSet("data", 0, 9, 11);
             AddDataSet("data", 2, 9, 11);
             AddDataSet("data", 4, 9, 11);
-            axes = GetComponentInChildren<Axes>();
+            
             SetMaxGridSize();
         }
 
@@ -66,11 +71,13 @@ namespace DataVis.Collaboration
             for (int i = 0; i < dataSets.Count; i++)
             {
                 dataSetMaxValues = dataSets[i].MaxValues;
-                maxX = Math.Max(maxX, dataSetMaxValues.x);
-                maxY = Math.Max(maxY, dataSetMaxValues.y);
-                maxZ = Math.Max(maxZ, dataSetMaxValues.z);
+                maxX = (float)Math.Ceiling(Math.Max(maxX, dataSetMaxValues.x));
+                maxY = (float)Math.Ceiling(Math.Max(maxY, dataSetMaxValues.y));
+                maxZ = (float)Math.Ceiling(Math.Max(maxZ, dataSetMaxValues.z));
             }
-            axes.renderGrid((float)Math.Ceiling(maxX), (float)Math.Ceiling(maxY), (float)Math.Ceiling(maxZ));
+            axes.renderGrid(maxX, maxY, maxZ);
+
+            labelManager.SetPositions(maxX, maxY, maxZ);
             UpdateSpawnPoint(maxX / 2.0f, maxY / 2.0f, -3f);
         }
 

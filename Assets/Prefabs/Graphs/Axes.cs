@@ -14,10 +14,10 @@ namespace DataVis.Collaboration
 
         private void Start()
         {
-            xzGrid = gameObject.transform.GetChild(0).gameObject;
-            xyGrid = gameObject.transform.GetChild(1).gameObject;
-            zyGrid_left = gameObject.transform.GetChild(2).gameObject;
-            zyGrid_right = gameObject.transform.GetChild(3).gameObject;
+            xzGrid = transform.GetChild(0).gameObject;
+            xyGrid = transform.GetChild(1).gameObject;
+            zyGrid_left = transform.GetChild(2).gameObject;
+            zyGrid_right = transform.GetChild(3).gameObject;
 
             thickness = xzGrid.transform.localScale.z;
         }
