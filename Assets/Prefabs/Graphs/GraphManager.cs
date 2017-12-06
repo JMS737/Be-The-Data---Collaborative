@@ -37,6 +37,7 @@ namespace DataVis.Collaboration
             yield return new WaitForSeconds(0.01f);
             AddDataSet("data", 0, 9, 11, dataPointPrefabs[0]);
             AddDataSet("data", 2, 9, 11, dataPointPrefabs[1]);
+            AddDataSet("data", 4, 9, 11, dataPointPrefabs[2]);
             axes = GetComponentInChildren<Axes>();
             SetMaxGridSize();
         }
