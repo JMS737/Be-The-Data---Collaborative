@@ -25,9 +25,9 @@ namespace DataVis.Collaboration
 
 		private DateTime minDate, maxDate;
 
-        private float scaleFactorX = 1;
-        private float scaleFactorY = 1;
-        private float scaleFactorZ = 1;
+//        private float scaleFactorX = 1;
+//        private float scaleFactorY = 1;
+//        private float scaleFactorZ = 1;
         
         // Use this for initialization
         void Start()
@@ -102,7 +102,7 @@ namespace DataVis.Collaboration
                 maxZ = (float)Math.Ceiling(Math.Max(maxZ, dataSetMaxValues.z));
             }
             axes.renderGrid(maxX, maxY, maxZ);
-			Debug.Log ("Min Date = " + minDate.ToString () + " Max Date = " + maxDate.ToString ());
+//			Debug.Log ("Min Date = " + minDate.ToString () + " Max Date = " + maxDate.ToString ());
 			this.minDate = minDate;
 			this.maxDate = maxDate;
 
