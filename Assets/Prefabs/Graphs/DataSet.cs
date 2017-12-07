@@ -9,6 +9,9 @@ namespace DataVis.Collaboration
     {
         public Vector3 MaxValues { get; set; }
 
+		public DateTime StartDate { get; set; }
+		public DateTime EndDate{ get; set; }
+
         private List<GameObject> dataPoints;
 
         public void LoadData(string dataAssetName, int participantIndex, int attributeIndexForY, int attributeIndexForZ, GameObject dataPointPrefab)
@@ -23,6 +26,7 @@ namespace DataVis.Collaboration
 
             DateValuePair pairY, pairZ;
             float maxX = 0, maxY = 0, maxZ = 0;
+			DateTime? startDate = null;
 
             for (int i = 0; i < maxLength; i++)
             {
@@ -33,7 +37,15 @@ namespace DataVis.Collaboration
 
                 Vector3 position;
                 if (float.TryParse(pairY.value, out position.y) && float.TryParse(pairZ.value, out position.z))
-                {
+				{
+					if (!startDate.HasValue)
+					{
+						startDate = DateTime.Parse (pairY.date);
+						Debug.Log (participantIndex.ToString () + ": Start Date = " + StartDate.ToString ());
+					} 
+					EndDate = DateTime.Parse (pairY.date);
+
+
                     position.x = i;
                     position.y /= 60;
                     position.z /= 60;
@@ -49,6 +61,8 @@ namespace DataVis.Collaboration
                     dataPoints.Add(newPoint);
                 }
             }
+			StartDate = startDate.Value;
+			Debug.Log (participantIndex.ToString () + ": End Date = " + EndDate.ToString ());
             Debug.Log("x=" + maxX.ToString() + " y=" + maxY.ToString() + " z=" + maxZ.ToString());
             MaxValues = new Vector3(maxX, maxY, maxZ);
         }

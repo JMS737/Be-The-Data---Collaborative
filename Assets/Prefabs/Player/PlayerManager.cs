@@ -25,7 +25,7 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
-            if (photonView.isMine)
+			if (photonView.isMine || !PhotonNetwork.connected)
             {
                 // Enable scripts on the camera.
                 GetComponentInChildren<Camera>().enabled = true;

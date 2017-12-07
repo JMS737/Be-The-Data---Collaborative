@@ -26,16 +26,17 @@ namespace DataVis.Collaboration
             }
             else
             {
-
-                if (PlayerManager.LocalPlayerInstance == null)
+				Vector3 spawnPoint = graphManager.GetSpawnPoint();
+				if (PlayerManager.LocalPlayerInstance == null && PhotonNetwork.connected)
                 {
                     Debug.Log("Instantiating Local Player...");
-                    Vector3 spawnPoint = graphManager.GetSpawnPoint();
+                    
                     PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint, Quaternion.identity, 0);
                 }
                 else
                 {
                     Debug.Log("Ignoring scene load.");
+					Instantiate (playerPrefab, spawnPoint, Quaternion.identity);
                 }
             }
         }

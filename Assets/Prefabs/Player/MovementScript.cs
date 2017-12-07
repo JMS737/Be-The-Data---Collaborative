@@ -49,7 +49,7 @@ namespace DataVis.Collaboration
         {
 
             // -- DAYDREAM INPUT -- 
-            if (!photonView.isMine)
+			if (!photonView.isMine && PhotonNetwork.connected)
             {
                 return;
             }

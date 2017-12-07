@@ -23,6 +23,8 @@ namespace DataVis.Collaboration
         private Axes axes;
         private LabelManager labelManager;
 
+		private DateTime minDate, maxDate;
+
         private float scaleFactorX = 1;
         private float scaleFactorY = 1;
         private float scaleFactorZ = 1;
@@ -40,11 +42,15 @@ namespace DataVis.Collaboration
             axes = GetComponentInChildren<Axes>();
             labelManager = GetComponentInChildren<LabelManager>();
 
-            AddDataSet("data", 0, 9, 11);
+//            AddDataSet("data", 0, 9, 11);
             AddDataSet("data", 2, 9, 11);
             AddDataSet("data", 4, 9, 11);
+			AddDataSet("data", 5, 9, 11);
+//			AddDataSet("data", 7, 9, 11);
+
             
             SetMaxGridSize();
+			AlignDataSets ();
         }
 
 
@@ -64,18 +70,41 @@ namespace DataVis.Collaboration
             return dataPointPrefabs[dataSets.Count % dataPointPrefabs.Count];
         }
 
+		// Uses the min and max dates to align datasets along the graphs x axis.
+		private void AlignDataSets()
+		{
+			for (int i = 0; i < dataSets.Count; i++)
+			{
+				dataSets[i].transform.position = new Vector3((float)(dataSets[i].StartDate - minDate).TotalDays, 0.0f, 0.0f);
+			}
+		}
+
         private void SetMaxGridSize()
         {
+			if (!(dataSets.Count > 0)) 
+			{
+				return;
+			}
+
             float maxX = 0, maxY = 0, maxZ = 0;
+			DateTime minDate = dataSets[0].StartDate, maxDate = dataSets[0].EndDate;
             Vector3 dataSetMaxValues;
+
             for (int i = 0; i < dataSets.Count; i++)
             {
                 dataSetMaxValues = dataSets[i].MaxValues;
-                maxX = (float)Math.Ceiling(Math.Max(maxX, dataSetMaxValues.x));
+
+				minDate = DateTimeHelper.Min (minDate, dataSets[i].StartDate);
+				maxDate = DateTimeHelper.Max (maxDate, dataSets[i].EndDate);
+
+				maxX = (float)(maxDate - minDate).TotalDays;
                 maxY = (float)Math.Ceiling(Math.Max(maxY, dataSetMaxValues.y));
                 maxZ = (float)Math.Ceiling(Math.Max(maxZ, dataSetMaxValues.z));
             }
             axes.renderGrid(maxX, maxY, maxZ);
+			Debug.Log ("Min Date = " + minDate.ToString () + " Max Date = " + maxDate.ToString ());
+			this.minDate = minDate;
+			this.maxDate = maxDate;
 
             labelManager.SetPositions(maxX, maxY, maxZ);
             UpdateSpawnPoint(maxX / 2.0f, maxY / 2.0f, -3f);
@@ -98,32 +127,46 @@ namespace DataVis.Collaboration
             return spawnPoint;
         }
 
-        public void SetScale(float? x = null, float? y = null, float? z = null)
-        {
-            if (x.HasValue)
-            {
-                scaleFactorX = x.Value;
-            }
-            if (y.HasValue)
-            {
-                scaleFactorY = y.Value;
-            }
-            if (z.HasValue)
-            {
-                scaleFactorZ = z.Value;
-            }
-            UpdateScale();
-        }
+//        public void SetScale(float? x = null, float? y = null, float? z = null)
+//        {
+//            if (x.HasValue)
+//            {
+//                scaleFactorX = x.Value;
+//            }
+//            if (y.HasValue)
+//            {
+//                scaleFactorY = y.Value;
+//            }
+//            if (z.HasValue)
+//            {
+//                scaleFactorZ = z.Value;
+//            }
+//            UpdateScale();
+//        }
 
-        private void UpdateScale()
-        {
-            axes.ScaleAxes(scaleFactorX, scaleFactorY, scaleFactorZ);
-            for (int i = 0; i < dataSets.Count; i++)
-            {
-                dataSets[i].ScaleData(scaleFactorX, scaleFactorY, scaleFactorZ);
-            }
-            //transform.localScale = new Vector3(scaleFactorX, scaleFactorY, scaleFactorZ);
-        }
+//        private void UpdateScale()
+//        {
+//            axes.ScaleAxes(scaleFactorX, scaleFactorY, scaleFactorZ);
+//            for (int i = 0; i < dataSets.Count; i++)
+//            {
+//                dataSets[i].ScaleData(scaleFactorX, scaleFactorY, scaleFactorZ);
+//            }
+//            //transform.localScale = new Vector3(scaleFactorX, scaleFactorY, scaleFactorZ);
+//        }
     }
+
+	public static class DateTimeHelper
+	{
+		public static DateTime Min(DateTime a, DateTime b)
+		{
+			return a < b ? a : b;
+		}
+
+		public static DateTime Max(DateTime a, DateTime b)
+		{
+			return a > b ? a : b;
+		}
+	}
+
 }
 
