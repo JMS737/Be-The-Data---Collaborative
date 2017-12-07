@@ -1896,6 +1896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83733b584ac767645989ea74e6a25aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xName: Date
+  yName: Productivity (Hours)
+  zName: Sleep (Hours)
 --- !u!114 &114254644964825930
 MonoBehaviour:
   m_ObjectHideFlags: 1
