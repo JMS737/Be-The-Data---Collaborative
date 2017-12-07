@@ -41,7 +41,7 @@ namespace DataVis.Collaboration
 					if (!startDate.HasValue)
 					{
 						startDate = DateTime.Parse (pairY.date);
-						Debug.Log (participantIndex.ToString () + ": Start Date = " + StartDate.ToString ());
+//						Debug.Log (participantIndex.ToString () + ": Start Date = " + StartDate.ToString ());
 					} 
 					EndDate = DateTime.Parse (pairY.date);
 
@@ -62,8 +62,8 @@ namespace DataVis.Collaboration
                 }
             }
 			StartDate = startDate.Value;
-			Debug.Log (participantIndex.ToString () + ": End Date = " + EndDate.ToString ());
-            Debug.Log("x=" + maxX.ToString() + " y=" + maxY.ToString() + " z=" + maxZ.ToString());
+//			Debug.Log (participantIndex.ToString () + ": End Date = " + EndDate.ToString ());
+//            Debug.Log("x=" + maxX.ToString() + " y=" + maxY.ToString() + " z=" + maxZ.ToString());
             MaxValues = new Vector3(maxX, maxY, maxZ);
         }
 

@@ -54,21 +54,21 @@ namespace DataVis.Collaboration
                 return;
             }
             // Record the user's first touch position and timestamp
-            if (!isScrolling && GvrController.IsTouching)
+            if (!isScrolling && GvrControllerInput.IsTouching)
             {
                 isScrolling = true;
-                prevTouch = GvrController.TouchPos;
+				prevTouch = GvrControllerInput.TouchPos;
                 prevTouchtime = Time.time;
             }
 
             // Record the user's latest touch position
-            if (GvrController.IsTouching)
+			if (GvrControllerInput.IsTouching)
             {
-                currentTouch = GvrController.TouchPos;
+				currentTouch = GvrControllerInput.TouchPos;
             }
 
             // Move around the world using the initial and final touch positions
-            if (GvrController.TouchUp)
+			if (GvrControllerInput.TouchUp)
             {
                 // User has lifted off the touchpad
                 isScrolling = false;
