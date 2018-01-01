@@ -11,11 +11,6 @@ public class HUDDataLabel : MonoBehaviour {
 	void Start () {
         textObj = GetComponent<Text>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void SetDataLabel(string label)
     {

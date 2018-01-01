@@ -675,8 +675,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114378890420730862}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114154359332952194
@@ -712,8 +712,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114570459030280166}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 3
-  instantiationId: 3
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114273659915153564
@@ -1033,7 +1033,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5b1c112421698464a8988287a6b1e623, type: 3}
-    m_FontSize: 5
+    m_FontSize: 4
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1110,8 +1110,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114485781775312574}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114930016874130286
