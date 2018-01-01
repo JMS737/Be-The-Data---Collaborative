@@ -2,70 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataPoint : MonoBehaviour {
-
-    public int id { get; set; }
-
-    public Vector3 values { get; set; }
-
-    private string xLabel = "", yLabel = "", zLabel = "";
-
-    private GameObject labelObj;
-
-	// Use this for initialization
-	void Start ()
+namespace DataVis.Collaboration
+{
+    public class DataPoint : MonoBehaviour
     {
-        labelObj = transform.GetChild(0).gameObject;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+
+        public int id { get; set; }
+
+        public Vector3 values { get; set; }
+
+        public string Label
+        {
+            get
+            {
+                return xLabel + "\n" + yLabel + "\n" + zLabel;
+            }
+        }
+
+        private string xLabel = "", yLabel = "", zLabel = "";
         
-    }
+        private HUDDataLabel hudLabel;
 
-    public void SetAxisScale(float x, float y, float z)
-    {
-        transform.position = new Vector3(values.x * x, values.y * y, values.z * z);
-    }
-
-    public void SetLabels(string x = null, string y = null, string z = null)
-    {
-        if (x != null)
+        // Use this for initialization
+        void Start()
         {
-            xLabel = x.Trim();
+            StartCoroutine("WaitAndAssignHUD");
+        }
+        
+        // Wait for player to be instantiated and then assign the HUDManager.
+        IEnumerator WaitAndAssignHUD()
+        {
+            yield return new WaitForSeconds(0.1f);
+            hudLabel = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDDataLabel>();
         }
 
-        if (y != null)
+        // Update is called once per frame
+        void Update()
         {
-            yLabel = y.Trim();
+
         }
 
-        if (z != null)
+        public void SetAxisScale(float x, float y, float z)
         {
-            zLabel = z.Trim();
+            transform.position = new Vector3(values.x * x, values.y * y, values.z * z);
         }
 
-        StartCoroutine("WaitAndAssign");
-    }
+        public void SetLabels(string x = null, string y = null, string z = null)
+        {
+            if (x != null)
+            {
+                xLabel = x.Trim();
+            }
 
-    // Gives the label object a chance to load and then assigns values.
-    // This prevents a null reference exception when the scene is first loaded.
-    IEnumerator WaitAndAssign()
-    {
-        yield return new WaitForSeconds(0.01f);
+            if (y != null)
+            {
+                yLabel = y.Trim();
+            }
 
-        labelObj.GetComponent<TextMesh>().text = xLabel + "\n" + yLabel + "\n" + zLabel + "\n";
-    }
+            if (z != null)
+            {
+                zLabel = z.Trim();
+            }
+        }
 
-    public void OnPointerEnter()
-    {
-        Debug.Log("Setting active");
-        labelObj.SetActive(true);
-    }
+        public void OnPointerEnter()
+        {
+            hudLabel.SetDataLabel(Label);
+        }
 
-    public void OnPointerExit()
-    {
-        labelObj.SetActive(false);
+        public void OnPointerExit()
+        {
+            hudLabel.SetDataLabel("");
+        }
     }
 }
+
