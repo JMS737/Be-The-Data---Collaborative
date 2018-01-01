@@ -897,7 +897,7 @@ MonoBehaviour:
   raycastMode: 2
   overridePointerCamera: {fileID: 0}
   drawDebugRays: 0
-  maxPointerDistance: 20
+  maxPointerDistance: 100
   defaultReticleDistance: 20
   overrideCameraRayIntersectionDistance: 0
 --- !u!114 &114617696551331508

@@ -14,7 +14,7 @@ namespace DataVis.Collaboration
 
         private void Awake()
         {
-            if (photonView.isMine)
+            if (photonView.isMine || !PhotonNetwork.connected)
             {
                 PlayerManager.LocalPlayerInstance = this.gameObject;
             }

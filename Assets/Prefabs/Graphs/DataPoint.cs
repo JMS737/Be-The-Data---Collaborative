@@ -8,19 +8,21 @@ public class DataPoint : MonoBehaviour {
 
     public Vector3 values { get; set; }
 
-    public string xLabel { get; set; }
-    public string yLabel { get; set; }
-    public string zLabel { get; set; }
+    private string xLabel = "", yLabel = "", zLabel = "";
+
+    private GameObject labelObj;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        labelObj = transform.GetChild(0).gameObject;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        
+    }
 
     public void SetAxisScale(float x, float y, float z)
     {
@@ -43,5 +45,27 @@ public class DataPoint : MonoBehaviour {
         {
             zLabel = z.Trim();
         }
+
+        StartCoroutine("WaitAndAssign");
+    }
+
+    // Gives the label object a chance to load and then assigns values.
+    // This prevents a null reference exception when the scene is first loaded.
+    IEnumerator WaitAndAssign()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        labelObj.GetComponent<TextMesh>().text = xLabel + "\n" + yLabel + "\n" + zLabel + "\n";
+    }
+
+    public void OnPointerEnter()
+    {
+        Debug.Log("Setting active");
+        labelObj.SetActive(true);
+    }
+
+    public void OnPointerExit()
+    {
+        labelObj.SetActive(false);
     }
 }

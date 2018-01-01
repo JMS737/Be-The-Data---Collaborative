@@ -1914,9 +1914,8 @@ MonoBehaviour:
     type: 2}
   dataPointPrefabs:
   - {fileID: 1131894251501358, guid: e8b6229d4595ca44d85800e84b7ed09a, type: 2}
-  - {fileID: 1131894251501358, guid: 3bbb44240ae7e774ca8378ff8622f332, type: 2}
-  - {fileID: 1131894251501358, guid: 32b6ddc8e755dbc4ba6c2f5c908f96d9, type: 2}
-  - {fileID: 1683732356167412, guid: 723abad8b2d294d31a6dfc462e38073a, type: 2}
+  - {fileID: 1131894251501358, guid: 394e47b38210bc94ea6c8b8f9fc89330, type: 2}
+  - {fileID: 1131894251501358, guid: 9fb0704e0ecbe56478eab5ca9e0d992b, type: 2}
 --- !u!114 &114878616023946598
 MonoBehaviour:
   m_ObjectHideFlags: 1
