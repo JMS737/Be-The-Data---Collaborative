@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DataVis.Collaboration
 {
-    public class DataPoint : MonoBehaviour
+	public class DataPoint : MonoBehaviour
     {
 
         public int id { get; set; }
