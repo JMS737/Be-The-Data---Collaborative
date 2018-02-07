@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1151532504878322
 GameObject:
   m_ObjectHideFlags: 1
@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 4646326781013764}
   - component: {fileID: 33716789588341172}
   - component: {fileID: 23531475268716444}
+  - component: {fileID: 114597348724003242}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -227,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4144339782519500
 Transform:
   m_ObjectHideFlags: 1
@@ -970,6 +971,17 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114597348724003242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701953118534262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d7dbe90e7164f5ba0e5e544684c98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114611422418405672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1056,7 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbcd34f3bd626b4486db172aa0a73a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Reticle: {fileID: 1913613480359350}
+  Laser: {fileID: 1135756596572852}
 --- !u!114 &114849361875593202
 MonoBehaviour:
   m_ObjectHideFlags: 1

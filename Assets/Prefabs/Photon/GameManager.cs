@@ -14,9 +14,12 @@ namespace DataVis.Collaboration
 
         private void Start()
         {
+			
             StartCoroutine("WaitAndSpawn");
         }
 
+		// Wait a small amount of time for the graph to be populated so the player can be
+		// spawned in the centre of the data.
         IEnumerator WaitAndSpawn()
         {
             yield return new WaitForSeconds(0.05f);

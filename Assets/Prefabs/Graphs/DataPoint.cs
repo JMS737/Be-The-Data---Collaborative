@@ -26,20 +26,16 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
-            StartCoroutine("WaitAndAssignHUD");
-        }
-        
-        // Wait for player to be instantiated and then assign the HUDManager.
-        IEnumerator WaitAndAssignHUD()
-        {
-            yield return new WaitForSeconds(0.1f);
-            hudLabel = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDDataLabel>();
+			
         }
 
         // Update is called once per frame
         void Update()
         {
-
+			if (hudLabel == null && PlayerManager.LocalPlayerInstance != null) {
+				Debug.Log ("HUD Set...");
+				hudLabel = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDDataLabel>();
+			}
         }
 
         public void SetAxisScale(float x, float y, float z)

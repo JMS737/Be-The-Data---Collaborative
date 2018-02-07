@@ -9,15 +9,45 @@ namespace DataVis.Collaboration
 
         public static GameObject LocalPlayerInstance;
 
-        public GameObject Reticle;
+        public GameObject Laser;
+
+//		public static List<Color> playerColours = new List<Color>
+//		{
+//			Color.blue,
+//			Color.yellow,
+//			Color.magenta,
+//			Color.white,
+//		};
+//
+//		private static int colourIndex = -1;
+//
+//		public static int ColourIndex {
+//			get {
+//				colourIndex++;
+//				if (colourIndex >= playerColours.Count) {
+//					colourIndex = 0;
+//				}
+//				return colourIndex;
+//			}
+//		}
+//
+//		public Color playerColour;
+//
+//		public Color PlayerColour {
+//			get {
+//				return playerColour;
+//			}
+//		} 
 
 
         private void Awake()
         {
-            if (photonView.isMine || !PhotonNetwork.connected)
-            {
-                PlayerManager.LocalPlayerInstance = this.gameObject;
-            }
+			if (photonView.isMine || !PhotonNetwork.connected) {
+				Debug.Log ("My Player Spawned");
+				PlayerManager.LocalPlayerInstance = this.gameObject;
+			} else {
+				Debug.Log ("Other Player Spawned");
+			}
 
             DontDestroyOnLoad(this.gameObject);
         }
@@ -39,14 +69,10 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<GvrArmModel>().enabled = true;
                 GetComponentInChildren<GvrTrackedController>().enabled = true;
 
-                Reticle.SetActive(true);
+				Laser.SetActive(true);
+
+//				playerColour = playerColours [ColourIndex];
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
