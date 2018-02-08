@@ -11,34 +11,8 @@ namespace DataVis.Collaboration
 
         public GameObject Laser;
 
-//		public static List<Color> playerColours = new List<Color>
-//		{
-//			Color.blue,
-//			Color.yellow,
-//			Color.magenta,
-//			Color.white,
-//		};
-//
-//		private static int colourIndex = -1;
-//
-//		public static int ColourIndex {
-//			get {
-//				colourIndex++;
-//				if (colourIndex >= playerColours.Count) {
-//					colourIndex = 0;
-//				}
-//				return colourIndex;
-//			}
-//		}
-//
-//		public Color playerColour;
-//
-//		public Color PlayerColour {
-//			get {
-//				return playerColour;
-//			}
-//		} 
-
+		// TODO: Use RPCs to add/remove highlights (e.g. specify a position and a colour)
+		// TODO: Look at changing colour selection to use RPCs
 
         private void Awake()
         {

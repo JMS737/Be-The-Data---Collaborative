@@ -33,7 +33,6 @@ namespace DataVis.Collaboration
         void Update()
         {
 			if (hudLabel == null && PlayerManager.LocalPlayerInstance != null) {
-				Debug.Log ("HUD Set...");
 				hudLabel = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDDataLabel>();
 			}
         }
