@@ -8,33 +8,21 @@ namespace DataVis.Collaboration
     {
         public GameObject highlightPrefab;
 
-        private Dictionary<Vector3, GameObject> highlightedPoints;
+        private Dictionary<Vector3, GameObject> highlightedPoints = new Dictionary<Vector3, GameObject>();
 
-        // Use this for initialization
-        void Start()
-        {
-            highlightedPoints = new Dictionary<Vector3, GameObject>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        // Instantiates a highlight object on all client machines.
+        //
+        // Note: Colour and a reference to the gameobject are dealt with in the
+        // PointHighlight script.
         public void AddHighlight(Vector3 point)
         {
             PhotonNetwork.Instantiate(highlightPrefab.name, point, Quaternion.identity, 0);
-            Debug.Log("Instantiated highlight");
-
-
-            //photonView.RPC("PUNAddHighlight", PhotonTargets.AllBufferedViaServer, point);
-
         }
 
+        // If a highlight exists for the given point, destroy the game object on
+        // all clients.
         public void RemoveHighlight(Vector3 point)
         {
-            //photonView.RPC("PUNRemoveHighlight", PhotonTargets.AllBufferedViaServer, point);
             if (highlightedPoints.ContainsKey(point))
             {
                 PhotonNetwork.Destroy(highlightedPoints[point]);
@@ -42,31 +30,12 @@ namespace DataVis.Collaboration
             }
         }
 
+        // Provides the ability to add a reference to a highlight gameobject from
+        // the PointHighlight script.
         public void AddReference(Vector3 point, GameObject highlight)
         {
             highlightedPoints.Add(point, highlight);
         }
-
-        //[PunRPC]
-        //public void PUNAddHighlight(Vector3 point)
-        //{
-        //    GameObject newHighlight = Instantiate(highlightPrefab, point, Quaternion.identity);
-        //    newHighlight.GetComponent<Pulse>().baseColor = GetComponent<PlayerManager>().PlayerColour;
-
-        //    Debug.Log("Highlight Object: " + newHighlight);
-
-        //    highlightedPoints.Add(point, newHighlight);
-        //}
-
-        //[PunRPC]
-        //public void PUNRemoveHighlight(Vector3 point)
-        //{
-        //    if (highlightedPoints.ContainsKey(point))
-        //    {
-        //        Destroy(highlightedPoints[point]);
-        //        highlightedPoints.Remove(point);
-        //    }
-        //}
     }
 }
 

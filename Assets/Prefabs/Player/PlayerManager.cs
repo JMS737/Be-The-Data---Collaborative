@@ -16,32 +16,30 @@ namespace DataVis.Collaboration
 
 
         // Static variable used to assign different colours to different players.
-        private static int colourIndex = -1;
+        private static int colourCounter = -1;
 
-        public int ColourIndex
+        public int NextColourIndex
         {
             get
             {
-                colourIndex++;
+                colourCounter++;
 
-                if (colourIndex >= playerColours.Count)
+                if (colourCounter >= playerColours.Count)
                 {
-                    colourIndex = 0;
+                    colourCounter = 0;
                 }
 
-                return colourIndex;
+                return colourCounter;
             }
         }
 
-        public int myColourIndex;
-
-        //private Color playerColour = Color.white;
+        public int playerColourIndex;
 
         public Color PlayerColour
         {
             get
             {
-                return playerColours[myColourIndex];
+                return playerColours[playerColourIndex];
             }
         }
 
@@ -78,7 +76,7 @@ namespace DataVis.Collaboration
 
 				laser.SetActive(true);
 
-                photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, ColourIndex);
+                photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
             }
         }
 
@@ -87,8 +85,8 @@ namespace DataVis.Collaboration
         {
             // Update the value so buffered RPC calls from existing clients will
             // be accounted for.
-            colourIndex = colourIx;
-            myColourIndex = colourIx;
+            colourCounter = colourIx;
+            playerColourIndex = colourIx;
 
             //playerColour = playerColours[colourIx];
             head.GetComponent<Renderer>().material.color = PlayerColour;

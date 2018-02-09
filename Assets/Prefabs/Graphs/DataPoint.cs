@@ -72,20 +72,22 @@ namespace DataVis.Collaboration
             hudLabel.SetDataLabel("");
         }
 
+        // Add or remove a highlight object around the current data point.
         public void OnPointerClick()
         {
+            HighlightManager HLManager = PlayerManager.LocalPlayerInstance.GetComponent<HighlightManager>();
+
+            // If a highlight object has already been spawned, remove it.
             if (hasLocalHighlight)
             {
-                Debug.Log("Removing Highlight on point");
                 hasLocalHighlight = false;
-                PlayerManager.LocalPlayerInstance.GetComponentInChildren<HighlightManager>().RemoveHighlight(transform.position);
+                HLManager.RemoveHighlight(transform.position);
             }
+            // Else add a new highlight.
             else
             {
-                Debug.Log("Highlighting point");
-
                 hasLocalHighlight = true;
-                PlayerManager.LocalPlayerInstance.GetComponentInChildren<HighlightManager>().AddHighlight(transform.position);
+                HLManager.AddHighlight(transform.position);
             }
 
         }
