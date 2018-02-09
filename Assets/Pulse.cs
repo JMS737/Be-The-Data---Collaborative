@@ -7,13 +7,11 @@ namespace DataVis.Collaboration
 	public class Pulse : MonoBehaviour {
 
 		Material material;
-		public Color baseColor;
+        public Color baseColor = Color.white;
 
 		// Use this for initialization
 		void Start () {
 			material = GetComponent<Renderer> ().material;
-	//		baseColor = material.color;
-
 		}
 		
 		// Update is called once per frame

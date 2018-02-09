@@ -23,10 +23,12 @@ namespace DataVis.Collaboration
         
         private HUDDataLabel hudLabel;
 
+        private bool hasLocalHighlight;
+
         // Use this for initialization
         void Start()
         {
-			
+            hasLocalHighlight = false;
         }
 
         // Update is called once per frame
@@ -68,6 +70,24 @@ namespace DataVis.Collaboration
         public void OnPointerExit()
         {
             hudLabel.SetDataLabel("");
+        }
+
+        public void OnPointerClick()
+        {
+            if (hasLocalHighlight)
+            {
+                Debug.Log("Removing Highlight on point");
+                hasLocalHighlight = false;
+                PlayerManager.LocalPlayerInstance.GetComponentInChildren<HighlightManager>().RemoveHighlight(transform.position);
+            }
+            else
+            {
+                Debug.Log("Highlighting point");
+
+                hasLocalHighlight = true;
+                PlayerManager.LocalPlayerInstance.GetComponentInChildren<HighlightManager>().AddHighlight(transform.position);
+            }
+
         }
     }
 }

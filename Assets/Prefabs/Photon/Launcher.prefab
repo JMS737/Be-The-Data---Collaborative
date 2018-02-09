@@ -52,5 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxPlayersPerRoom: 4
-  LogLevel: 1
+  LogLevel: 0
   statusText: {fileID: 0}

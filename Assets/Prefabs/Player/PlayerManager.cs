@@ -6,7 +6,6 @@ namespace DataVis.Collaboration
 {
     public class PlayerManager : Photon.PunBehaviour
     {
-
         public static GameObject LocalPlayerInstance;
         public GameObject laser;
 
@@ -14,6 +13,7 @@ namespace DataVis.Collaboration
         public GameObject head;
 
         public List<Color> playerColours;
+
 
         // Static variable used to assign different colours to different players.
         private static int colourIndex = -1;
@@ -33,7 +33,17 @@ namespace DataVis.Collaboration
             }
         }
 
-        private Color playerColour = Color.white;
+        public int myColourIndex;
+
+        //private Color playerColour = Color.white;
+
+        public Color PlayerColour
+        {
+            get
+            {
+                return playerColours[myColourIndex];
+            }
+        }
 
 		// TODO: Use RPCs to add/remove highlights (e.g. specify a position and a colour)
 
@@ -78,10 +88,13 @@ namespace DataVis.Collaboration
             // Update the value so buffered RPC calls from existing clients will
             // be accounted for.
             colourIndex = colourIx;
+            myColourIndex = colourIx;
 
-            playerColour = playerColours[colourIx];
-            head.GetComponent<Renderer>().material.color = playerColour;
+            //playerColour = playerColours[colourIx];
+            head.GetComponent<Renderer>().material.color = PlayerColour;
         }
+
+
     }
 }
 
