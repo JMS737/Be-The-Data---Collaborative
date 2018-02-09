@@ -1069,6 +1069,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Laser: {fileID: 1135756596572852}
+  head: {fileID: 1701953118534262}
+  playerColours:
+  - {r: 1, g: 0.4852941, b: 0.4852941, a: 0}
+  - {r: 0.12794113, g: 0.6397059, b: 0, a: 0}
+  - {r: 0, g: 0.46206903, b: 1, a: 0}
+  - {r: 1, g: 0.8482759, b: 0, a: 0}
 --- !u!114 &114849361875593202
 MonoBehaviour:
   m_ObjectHideFlags: 1
