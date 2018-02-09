@@ -8,23 +8,27 @@ namespace DataVis.Collaboration
     {
 
         public static GameObject LocalPlayerInstance;
-        public GameObject Laser;
+        public GameObject laser;
 
+        [Tooltip("This object will have its material colour set to that of the assigned player colour.")]
         public GameObject head;
 
         public List<Color> playerColours;
 
+        // Static variable used to assign different colours to different players.
         private static int colourIndex = -1;
 
-        public static int ColourIndex
+        public int ColourIndex
         {
             get
             {
                 colourIndex++;
-                if (colourIndex >= 4)
+
+                if (colourIndex >= playerColours.Count)
                 {
                     colourIndex = 0;
                 }
+
                 return colourIndex;
             }
         }
@@ -32,7 +36,6 @@ namespace DataVis.Collaboration
         private Color playerColour = Color.white;
 
 		// TODO: Use RPCs to add/remove highlights (e.g. specify a position and a colour)
-		// TODO: Look at changing colour selection to use RPCs
 
         private void Awake()
         {
@@ -63,7 +66,7 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<GvrArmModel>().enabled = true;
                 GetComponentInChildren<GvrTrackedController>().enabled = true;
 
-				Laser.SetActive(true);
+				laser.SetActive(true);
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, ColourIndex);
             }
@@ -72,9 +75,7 @@ namespace DataVis.Collaboration
         [PunRPC]
         public void SetColour(int colourIx)
         {
-            Debug.Log("My player colour is: " + playerColour);
-
-            // Set the value so buffered RPC calls from existing clients will
+            // Update the value so buffered RPC calls from existing clients will
             // be accounted for.
             colourIndex = colourIx;
 
