@@ -71,10 +71,10 @@ namespace DataVis.Collaboration
 
                 // Enable scripts on the controller.
 
-                GetComponentInChildren<GvrArmModel>().enabled = true;
-                GetComponentInChildren<GvrTrackedController>().enabled = true;
+                //GetComponentInChildren<GvrArmModel>().enabled = true;
+                //GetComponentInChildren<GvrTrackedController>().enabled = true;
 
-				laser.SetActive(true);
+                laser.SetActive(true);
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
             }
