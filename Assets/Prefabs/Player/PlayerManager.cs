@@ -75,13 +75,7 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<FlareLayer>().enabled = true;
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-                //GetComponentInChildren<MovementScript>().enabled = true;
                 playerMovement = GetComponent<PlayerMovement>();
-
-                // Enable scripts on the controller.
-
-                //GetComponentInChildren<GvrArmModel>().enabled = true;
-                //GetComponentInChildren<GvrTrackedController>().enabled = true;
 
                 laser.SetActive(true);
 
