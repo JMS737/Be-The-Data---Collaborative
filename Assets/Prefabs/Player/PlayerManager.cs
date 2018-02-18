@@ -14,6 +14,14 @@ namespace DataVis.Collaboration
 
         public List<Color> playerColours;
 
+        [Range(0f, 1f)]
+        public float doubleClickTime = 0.25f;
+
+        private bool oneClick = false;
+        private float firstClickTime;
+
+        private PlayerMovement playerMovement;
+
 
         // Static variable used to assign different colours to different players.
         private static int colourCounter = -1;
@@ -67,7 +75,8 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<FlareLayer>().enabled = true;
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-                GetComponentInChildren<MovementScript>().enabled = true;
+                //GetComponentInChildren<MovementScript>().enabled = true;
+                playerMovement = GetComponent<PlayerMovement>();
 
                 // Enable scripts on the controller.
 
@@ -77,6 +86,35 @@ namespace DataVis.Collaboration
                 laser.SetActive(true);
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (oneClick && (Time.time - firstClickTime) <= doubleClickTime)
+                {
+                    // Double click
+                    Debug.Log("Double click");
+                    oneClick = false;
+                    playerMovement.MoveForward();
+                }
+
+                else
+                {
+                    // Set first click.
+                    oneClick = true;
+                    firstClickTime = Time.time;
+                }
+            }
+
+            if (oneClick && (Time.time - firstClickTime) > doubleClickTime)
+            {
+                // Single Click
+                Debug.Log("Single click");
+                oneClick = false;
+                
             }
         }
 
