@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementStep: 5
-  moveTime: 1
+  moveSpeed: 3
 --- !u!114 &114725988351616634
 MonoBehaviour:
   m_ObjectHideFlags: 1

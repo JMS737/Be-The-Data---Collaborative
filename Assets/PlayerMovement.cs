@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float MovementStep = 1.0f;
+    [Range(0.1f, 10f)]
+    public float MovementStep = 5.0f;
 
-    public float moveTime = 1.0f;
+    [Range(1, 10)]
+    public float moveSpeed = 3.0f;
 
     private Vector3 newPosition;
 
@@ -23,8 +25,20 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
-        Vector3 change = (newPosition - transform.position) * Time.deltaTime / moveTime;
-        //Debug.Log(newPosition - transform.position);
-        transform.position += change;
+        Vector3 distanceTo = newPosition - transform.position;
+
+        // Divide by the magnitude to normalise the speed throughout the move.
+        Vector3 change = distanceTo * Time.deltaTime * moveSpeed / distanceTo.magnitude;
+
+        if (newPosition != transform.position)
+        {
+            transform.position += change;
+            if (distanceTo.magnitude < 0.1f)
+            {
+                newPosition = transform.position;
+            }
+        }
+        
+        
     }
 }
