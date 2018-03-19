@@ -11,6 +11,7 @@ namespace DataVis.Collaboration
         private GameObject xyGrid;
         private GameObject zyGrid_left;
         private GameObject zyGrid_right;
+        private GameObject highlightGrid;
 
         private void Start()
         {
@@ -18,6 +19,7 @@ namespace DataVis.Collaboration
             xyGrid = transform.GetChild(1).gameObject;
             zyGrid_left = transform.GetChild(2).gameObject;
             zyGrid_right = transform.GetChild(3).gameObject;
+            highlightGrid = transform.GetChild(4).gameObject;
 
             thickness = xzGrid.transform.localScale.z;
         }
@@ -31,24 +33,41 @@ namespace DataVis.Collaboration
             xyGrid.transform.localScale = new Vector3(x, y, thickness);
             zyGrid_left.transform.localScale = new Vector3(z, y, thickness);
             zyGrid_right.transform.localScale = new Vector3(z, y, thickness);
+            highlightGrid.transform.localScale = new Vector3(z, y, thickness);
 
             // Position the grids
             xzGrid.transform.position = new Vector3(x / 2.0f, 0.0f, z / 2.0f);
             xyGrid.transform.position = new Vector3(x / 2.0f, y / 2.0f, z);
             zyGrid_left.transform.position = new Vector3(0.0f, y / 2.0f, z / 2.0f);
             zyGrid_right.transform.position = new Vector3(x, y / 2.0f, z / 2.0f);
+            highlightGrid.transform.position = new Vector3(0.0f, y / 2.0f, z / 2.0f);
 
             // Adjust textures to spread evenly over the passed dimensions
             xzGrid.GetComponent<Renderer>().material.mainTextureScale = new Vector2(x, z);
             xyGrid.GetComponent<Renderer>().material.mainTextureScale = new Vector2(x, y);
             zyGrid_left.GetComponent<Renderer>().material.mainTextureScale = new Vector2(z, y);
             zyGrid_right.GetComponent<Renderer>().material.mainTextureScale = new Vector2(z, y);
+            highlightGrid.GetComponent<Renderer>().material.mainTextureScale = new Vector2(z, y);
         }
 
         public void ScaleAxes(float x, float y, float z)
         {
             transform.localScale = new Vector3(x, y, z);
         }
+
+        //public void EnableHighlightGrid(float x)
+        //{
+        //    Vector3 newPosition = highlightGrid.transform.position;
+        //    newPosition.x = x;
+
+        //    highlightGrid.transform.position = newPosition;
+        //    highlightGrid.SetActive(true);
+        //}
+
+        //public void DisableHighlightGrid()
+        //{
+        //    highlightGrid.SetActive(false);
+        //}
     }
 }
 

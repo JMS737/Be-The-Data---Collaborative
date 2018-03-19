@@ -19,6 +19,8 @@ namespace DataVis.Collaboration
             }
         }
 
+        private HighlightGrid highlightGrid;
+
         private string xLabel = "", yLabel = "", zLabel = "";
         
         private HUDDataLabel hudLabel;
@@ -29,10 +31,19 @@ namespace DataVis.Collaboration
         void Start()
         {
             hasLocalHighlight = false;
+            StartCoroutine("WaitAndLoad");
+            highlightGrid = FindObjectOfType<HighlightGrid>();
         }
 
-        // Update is called once per frame
-        void Update()
+
+        IEnumerator WaitAndLoad()
+        {
+            yield return new WaitForSeconds(0.1f);
+            highlightGrid = FindObjectOfType<HighlightGrid>();
+        }
+
+            // Update is called once per frame
+            void Update()
         {
 			if (hudLabel == null && PlayerManager.LocalPlayerInstance != null) {
 				hudLabel = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDDataLabel>();
@@ -65,11 +76,14 @@ namespace DataVis.Collaboration
         public void OnPointerEnter()
         {
             hudLabel.SetDataLabel(Label);
+
+            highlightGrid.EnableGrid(transform.position.x);
         }
 
         public void OnPointerExit()
         {
             hudLabel.SetDataLabel("");
+            highlightGrid.DisableGrid();
         }
 
         // Add or remove a highlight object around the current data point.

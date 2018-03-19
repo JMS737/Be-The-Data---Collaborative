@@ -22,6 +22,7 @@ namespace DataVis.Collaboration
 
         private Axes axes;
         private LabelManager labelManager;
+        private LabelValueManager labelValueManager;
 
 		private DateTime minDate, maxDate;
 
@@ -41,8 +42,9 @@ namespace DataVis.Collaboration
 
             axes = GetComponentInChildren<Axes>();
             labelManager = GetComponentInChildren<LabelManager>();
+            labelValueManager = GetComponentInChildren<LabelValueManager>();
 
-//            AddDataSet("data", 0, 9, 11);
+            //            AddDataSet("data", 0, 9, 11);
             AddDataSet("data", 2, 9, 11);
             AddDataSet("data", 4, 9, 11);
 			AddDataSet("data", 5, 9, 11);
@@ -107,6 +109,7 @@ namespace DataVis.Collaboration
 			this.maxDate = maxDate;
 
             labelManager.SetPositions(maxX, maxY, maxZ);
+            labelValueManager.SetupLabels(minDate, maxDate, maxY, maxZ);
             UpdateSpawnPoint(maxX / 2.0f, maxY / 2.0f, -3f);
         }
 
