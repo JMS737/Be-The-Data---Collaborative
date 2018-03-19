@@ -1089,6 +1089,7 @@ MonoBehaviour:
   - {r: 0.12794113, g: 0.6397059, b: 0, a: 0}
   - {r: 0, g: 0.46206903, b: 1, a: 0}
   - {r: 0.6965513, g: 0, b: 1, a: 0}
+  playerColourIndex: 0
 --- !u!114 &114849361875593202
 MonoBehaviour:
   m_ObjectHideFlags: 1

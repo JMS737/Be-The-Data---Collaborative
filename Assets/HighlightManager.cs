@@ -10,6 +10,7 @@ namespace DataVis.Collaboration
 
         private Dictionary<Vector3, GameObject> highlightedPoints = new Dictionary<Vector3, GameObject>();
 
+
         // Instantiates a highlight object on all client machines.
         //
         // Note: Colour and a reference to the gameobject are dealt with in the

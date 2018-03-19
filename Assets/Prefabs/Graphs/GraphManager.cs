@@ -16,6 +16,13 @@ namespace DataVis.Collaboration
         [Tooltip("Prefabs to be used for datasets.\nNote: Prefabs will be reused if the number of datasets exceeds number of prefabs specified.")]
         public List<GameObject> dataPointPrefabs;
 
+        public static float maxX = 0;
+        public static float maxY = 0;
+        public static float maxZ = 0;
+
+        private GameObject highlightGridPrefab;
+        private HighlightGrid highlightGrid;
+
         private List<DataSet> dataSets = new List<DataSet>();
 
         private Vector3 spawnPoint;
@@ -34,6 +41,9 @@ namespace DataVis.Collaboration
         void Start()
         {
             StartCoroutine("WaitAndLoad");
+            highlightGridPrefab = Resources.Load<GameObject>("HighlightGrid");
+            Debug.Log(highlightGridPrefab);
+            highlightGrid = Instantiate(highlightGridPrefab, transform).GetComponent<HighlightGrid>();
         }
 
         IEnumerator WaitAndLoad()
@@ -88,7 +98,6 @@ namespace DataVis.Collaboration
 				return;
 			}
 
-            float maxX = 0, maxY = 0, maxZ = 0;
 			DateTime minDate = dataSets[0].StartDate, maxDate = dataSets[0].EndDate;
             Vector3 dataSetMaxValues;
 
@@ -104,12 +113,14 @@ namespace DataVis.Collaboration
                 maxZ = (float)Math.Ceiling(Math.Max(maxZ, dataSetMaxValues.z));
             }
             axes.renderGrid(maxX, maxY, maxZ);
-//			Debug.Log ("Min Date = " + minDate.ToString () + " Max Date = " + maxDate.ToString ());
-			this.minDate = minDate;
+
+            this.minDate = minDate;
 			this.maxDate = maxDate;
 
             labelManager.SetPositions(maxX, maxY, maxZ);
             labelValueManager.SetupLabels(minDate, maxDate, maxY, maxZ);
+            highlightGrid.SetupGrid(maxY, maxZ);
+
             UpdateSpawnPoint(maxX / 2.0f, maxY / 2.0f, -3f);
         }
 

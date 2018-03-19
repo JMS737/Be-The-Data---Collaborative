@@ -31,19 +31,11 @@ namespace DataVis.Collaboration
         void Start()
         {
             hasLocalHighlight = false;
-            StartCoroutine("WaitAndLoad");
             highlightGrid = FindObjectOfType<HighlightGrid>();
         }
 
-
-        IEnumerator WaitAndLoad()
-        {
-            yield return new WaitForSeconds(0.1f);
-            highlightGrid = FindObjectOfType<HighlightGrid>();
-        }
-
-            // Update is called once per frame
-            void Update()
+        // Update is called once per frame
+        void Update()
         {
 			if (hudLabel == null && PlayerManager.LocalPlayerInstance != null) {
 				hudLabel = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDDataLabel>();
@@ -77,7 +69,7 @@ namespace DataVis.Collaboration
         {
             hudLabel.SetDataLabel(Label);
 
-            highlightGrid.EnableGrid(transform.position.x);
+            highlightGrid.EnableGrid(transform.position.x, xLabel.Substring(6));
         }
 
         public void OnPointerExit()
