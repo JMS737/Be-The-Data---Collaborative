@@ -56,7 +56,7 @@ namespace DataVis.Collaboration
 
                     GameObject newPoint = Instantiate(dataPointPrefab, position, Quaternion.identity, this.transform);
                     newPoint.GetComponent<DataPoint>().id = i;
-                    newPoint.GetComponent<DataPoint>().SetLabels("Date: <i>" + pairY.date + "</i>", "Productivity: <i>" + Math.Round(position.y, 3) + " Hours</i>", "Sleep: <i>" + Math.Round(position.z, 3) + " Hours</i>");
+                    newPoint.GetComponent<DataPoint>().SetLabels("Date: <i>" + DateTime.Parse(pairY.date).ToString("dd/MM/yyyy") + "</i>", "Productivity: <i>" + Math.Round(position.y, 3) + " Hours</i>", "Sleep: <i>" + Math.Round(position.z, 3) + " Hours</i>");
                     newPoint.GetComponent<DataPoint>().values = position;
                     dataPoints.Add(newPoint);
                 }

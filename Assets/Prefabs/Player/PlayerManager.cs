@@ -14,7 +14,6 @@ namespace DataVis.Collaboration
 
         public List<Color> playerColours;
 
-
         // Static variable used to assign different colours to different players.
         private static int colourCounter = -1;
 
