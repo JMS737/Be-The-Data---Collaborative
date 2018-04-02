@@ -55,12 +55,17 @@ namespace DataVis.Collaboration
             labelValueManager = GetComponentInChildren<LabelValueManager>();
 
             //            AddDataSet("data", 0, 9, 11);
-            AddDataSet("data", 2, 9, 11);
-            AddDataSet("data", 4, 9, 11);
-			AddDataSet("data", 5, 9, 11);
-//			AddDataSet("data", 7, 9, 11);
+            //         AddDataSet("data", 7, 9, 11);
+            //         AddDataSet("data", 10, 9, 11);
+            //AddDataSet("data", 14, 9, 11);
+            //         AddDataSet("data", 16, 9, 11);
 
-            
+            AddDataSet("data", 4, 0, 1);
+            AddDataSet("data", 5, 0, 1);
+            AddDataSet("data", 6, 0, 1);
+            AddDataSet("data", 7, 0, 1);
+
+
             SetMaxGridSize();
 			AlignDataSets ();
         }
