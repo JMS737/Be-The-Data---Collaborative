@@ -20,7 +20,7 @@ namespace DataVis.Collaboration
         // Update is called once per frame
         void Update()
         {
-            Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 0.1f)) - localPlayerTransform.position).normalized;
+            Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 0.3f)) - localPlayerTransform.position).normalized;
             transform.position = localPlayerTransform.position + (direction * 1);
         }
 

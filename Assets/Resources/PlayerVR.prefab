@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 1518526782643708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 4381768799822274}
   m_RootOrder: 0
@@ -764,8 +764,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114378890420730862}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 3
-  instantiationId: 3
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114154359332952194
@@ -803,8 +803,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114570459030280166}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114273659915153564
@@ -1219,8 +1219,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114485781775312574}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114930016874130286
