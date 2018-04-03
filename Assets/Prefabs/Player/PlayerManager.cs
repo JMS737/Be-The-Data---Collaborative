@@ -107,7 +107,7 @@ namespace DataVis.Collaboration
 
             foreach (PhotonPlayer player in PhotonNetwork.playerList)
             {
-                if (name == player.NickName)
+                if (name == player.NickName && !player.IsLocal)
                 {
                     PlayerManager playerManager = player.TagObject as PlayerManager;
                     playerHUD.AddPlayerLabel(name, playerManager.PlayerColour, playerManager.transform);

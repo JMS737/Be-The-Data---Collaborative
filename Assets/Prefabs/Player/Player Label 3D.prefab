@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4819250886350894}
   - component: {fileID: 23502648724426818}
   - component: {fileID: 102727220667540560}
+  - component: {fileID: 114702729168393890}
   m_Layer: 5
   m_Name: Player Label 3D
   m_TagString: Untagged
@@ -96,3 +97,14 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114702729168393890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056798112408016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72bbc288d484ad04197e6419eaec39f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
