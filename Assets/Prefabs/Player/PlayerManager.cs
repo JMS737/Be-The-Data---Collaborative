@@ -14,6 +14,8 @@ namespace DataVis.Collaboration
 
         public List<Color> playerColours;
 
+        public HUDManager PlayerHUD { get; set; }
+
         // Static variable used to assign different colours to different players.
         private static int colourCounter = -1;
 
@@ -87,26 +89,32 @@ namespace DataVis.Collaboration
 
                 PhotonNetwork.playerName = "Player " + playerColourIndex;
 
-                
+                PlayerHUD = GetComponent<HUDManager>();
 
-                //foreach (PhotonPlayer player in PhotonNetwork.playerList)
-                //{
-                //    if (!player.IsLocal)
-                //    {
-                //        Debug.Log("Adding player " + playerColourIndex);
-                //        GameObject playerObj = player.TagObject as GameObject;
-                        
-                //    }
-                //}
+                foreach (PhotonPlayer player in PhotonNetwork.playerList)
+                {
+                    if (!player.IsLocal)
+                    {
+                        Debug.Log("Adding player " + playerColourIndex);
+                        GameObject playerObj = player.TagObject as GameObject;
+                        PlayerManager playerManager = playerObj.GetComponent<PlayerManager>();
+                        PlayerHUD.AddPlayerLabel(player.NickName, playerManager.PlayerColour, playerObj.transform);
+                        playerManager.PlayerHUD.AddPlayerLabel(PhotonNetwork.player.NickName, PlayerColour, this.transform);
+                    }
+                }
             }
         }
 
-        public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
-        {
-            HUDManager playerHUD = GetComponent<HUDManager>();
-            GameObject playerObj = (GameObject)newPlayer.TagObject;
-            playerHUD.AddPlayerLabel(newPlayer.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
-        }
+        //public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+        //{
+        //    HUDManager playerHUD = GetComponent<HUDManager>();
+        //    GameObject playerObj = (GameObject)newPlayer.TagObject;
+
+        //    Debug.Log("HUD = " + playerHUD);
+        //    Debug.Log("Obj = " + playerObj);
+        //    playerHUD.AddPlayerLabel(newPlayer.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
+        //}
+
 
         [PunRPC]
         public void SetColour(int colourIx)
