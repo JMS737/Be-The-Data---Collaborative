@@ -22,7 +22,8 @@ namespace DataVis.Collaboration
         // Update is called once per frame
         void Update()
         {
-            //textTransfrom.position = targetPlayerTransform.position + Vector3.up * 5;
+            Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 2)) - localPlayerTransform.position).normalized;
+            textTransfrom.position = localPlayerTransform.position + (direction * 1);
         }
 
         public void SetupLabel(string name, Color colour, Transform playerTransform)
