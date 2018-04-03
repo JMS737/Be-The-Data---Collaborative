@@ -705,6 +705,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5697dd0ab655e314794499aa226ae62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLabelPrefab: {fileID: 1403573265837614, guid: 9317710f0fc09ad4b83f12e312dd91c8,
+    type: 2}
 --- !u!114 &114253129367351940
 MonoBehaviour:
   m_ObjectHideFlags: 1

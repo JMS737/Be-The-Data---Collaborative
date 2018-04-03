@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448351592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0.1, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1337366386}
@@ -160,14 +160,14 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448351592}
-  m_Text: Dataset?
+  m_Text: 'Dataset:'
   m_OffsetZ: 0
-  m_CharacterSize: 0.03
+  m_CharacterSize: 0.02
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 70
+  m_FontSize: 60
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 5b1c112421698464a8988287a6b1e623, type: 3}
@@ -474,24 +474,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1888258096099774, guid: af551ef773360134894156dd02b9b865, type: 2}
-      propertyPath: m_Name
-      value: SphereButton1
-      objectReference: {fileID: 0}
     - target: {fileID: 114152327378087714, guid: af551ef773360134894156dd02b9b865,
         type: 2}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 542585552}
-    - target: {fileID: 102318763630111404, guid: af551ef773360134894156dd02b9b865,
-        type: 2}
-      propertyPath: m_Text
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114152327378087714, guid: af551ef773360134894156dd02b9b865,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 0
+    - target: {fileID: 1888258096099774, guid: af551ef773360134894156dd02b9b865, type: 2}
+      propertyPath: m_Name
+      value: SphereButton1
       objectReference: {fileID: 0}
     - target: {fileID: 23826616206502944, guid: af551ef773360134894156dd02b9b865,
         type: 2}
@@ -1073,11 +1063,11 @@ Prefab:
       propertyPath: m_Name
       value: SphereButton4
       objectReference: {fileID: 0}
-    - target: {fileID: 23826616206502944, guid: af551ef773360134894156dd02b9b865,
+    - target: {fileID: 102318763630111404, guid: af551ef773360134894156dd02b9b865,
         type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f52f4e1184188084493acd7dd103bcbe, type: 2}
+      propertyPath: m_Text
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af551ef773360134894156dd02b9b865, type: 2}
   m_IsPrefabParent: 0

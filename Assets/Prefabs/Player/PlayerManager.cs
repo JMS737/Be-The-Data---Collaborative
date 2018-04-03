@@ -77,6 +77,11 @@ namespace DataVis.Collaboration
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
             }
+
+            else
+            {
+                LocalPlayerInstance.GetComponentInChildren<HUDManager>().AddPlayerLabel("Player " + (playerColourIndex + 1), PlayerColour, transform);
+            }
         }
 
         [PunRPC]
