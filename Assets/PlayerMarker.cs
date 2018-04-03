@@ -13,15 +13,21 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
-            localPlayerTransform = PlayerManager.LocalPlayerInstance.transform;
             targetPlayerTransform = transform.parent.transform;
         }
 
         // Update is called once per frame
         void Update()
         {
-            Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 0.3f)) - localPlayerTransform.position).normalized;
-            transform.position = localPlayerTransform.position + (direction * 1);
+            if (localPlayerTransform == null)
+            {
+                localPlayerTransform = PlayerManager.LocalPlayerInstance.transform;
+            }
+            else
+            {
+                Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 0.3f)) - localPlayerTransform.position).normalized;
+                transform.position = localPlayerTransform.position + (direction * 1);
+            }
         }
 
         public void SetColour(Color colour)
