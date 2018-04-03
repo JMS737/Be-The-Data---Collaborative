@@ -56,11 +56,6 @@ namespace DataVis.Collaboration
             DontDestroyOnLoad(this.gameObject);
         }
 
-        public override void OnPhotonInstantiate(PhotonMessageInfo info)
-        {
-            info.sender.TagObject = this;
-        }
-
         // Use this for initialization
         void Start()
         {
@@ -81,10 +76,7 @@ namespace DataVis.Collaboration
 				laser.SetActive(true);
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
-
                 PhotonNetwork.player.NickName = "Player " + (colourCounter + 1);
-
-                photonView.RPC("AddLabel", PhotonTargets.AllBufferedViaServer, PhotonNetwork.player.NickName);
             }
         }
 
@@ -98,21 +90,7 @@ namespace DataVis.Collaboration
 
             //playerColour = playerColours[colourIx];
             head.GetComponent<Renderer>().material.color = PlayerColour;
-        }
-
-        [PunRPC]
-        public void AddLabel(string name)
-        {
-            HUDManager playerHUD = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDManager>();
-
-            foreach (PhotonPlayer player in PhotonNetwork.playerList)
-            {
-                if (name == player.NickName && !player.IsLocal)
-                {
-                    PlayerManager playerManager = player.TagObject as PlayerManager;
-                    playerHUD.AddPlayerLabel(name, playerManager.PlayerColour, playerManager.transform);
-                }
-            }
+            GetComponentInChildren<PlayerMarker>().SetColour(PlayerColour);
         }
     }
 }
