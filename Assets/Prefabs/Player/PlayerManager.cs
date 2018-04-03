@@ -80,8 +80,13 @@ namespace DataVis.Collaboration
 
 				laser.SetActive(true);
 
+                PhotonNetwork.player.TagObject = this;
+                
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
-                photonView.RPC("AddLabel", PhotonTargets.AllBufferedViaServer, "Player", this.transform, PlayerColour);
+
+                PhotonNetwork.player.NickName = "Player " + colourCounter;
+
+                photonView.RPC("AddLabel", PhotonTargets.AllBufferedViaServer, PhotonNetwork.player.NickName);
             }
         }
 
@@ -98,11 +103,19 @@ namespace DataVis.Collaboration
         }
 
         [PunRPC]
-        public void AddLabel(string name, Transform transform, Color colour)
+        public void AddLabel(string name)
         {
             HUDManager playerHUD = GetComponentInChildren<HUDManager>();
 
-            playerHUD.AddPlayerLabel(name, colour, transform);
+            foreach (PhotonPlayer player in PhotonNetwork.playerList)
+            {
+                if (name == player.NickName)
+                {
+                    PlayerManager playerManager = (PlayerManager)player.TagObject;
+                    playerHUD.AddPlayerLabel(name, playerManager.PlayerColour, playerManager.transform);
+                }
+            }
+            
         }
     }
 }
