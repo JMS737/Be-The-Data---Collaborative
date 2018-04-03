@@ -111,7 +111,7 @@ namespace DataVis.Collaboration
             {
                 if (name == player.NickName)
                 {
-                    PlayerManager playerManager = (PlayerManager)player.TagObject;
+                    PlayerManager playerManager = player.TagObject as PlayerManager;
                     playerHUD.AddPlayerLabel(name, playerManager.PlayerColour, playerManager.transform);
                 }
             }
