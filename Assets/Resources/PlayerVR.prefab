@@ -690,8 +690,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114378890420730862}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 3
+  instantiationId: 3
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114154359332952194
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5697dd0ab655e314794499aa226ae62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLabelPrefab: {fileID: 1403573265837614, guid: 9317710f0fc09ad4b83f12e312dd91c8,
+  playerLabelPrefab: {fileID: 1056798112408016, guid: 5ef13487bdf3e6f4b84bfef4945d01b2,
     type: 2}
 --- !u!114 &114253129367351940
 MonoBehaviour:
@@ -729,8 +729,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114570459030280166}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114273659915153564
@@ -1145,8 +1145,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114485781775312574}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 2
+  instantiationId: 2
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114930016874130286
