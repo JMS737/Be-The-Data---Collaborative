@@ -16,7 +16,7 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
-            textTransfrom = GetComponent<RectTransform>();
+            //textTransfrom = GetComponent<RectTransform>();
         }
 
         // Update is called once per frame

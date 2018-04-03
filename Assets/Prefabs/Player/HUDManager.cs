@@ -22,7 +22,8 @@ namespace DataVis.Collaboration
 
         public void AddPlayerLabel(string name, Color colour, Transform transform)
         {
-            GameObject label = Instantiate(playerLabelPrefab, this.transform);
+            Debug.Log("Adding label");
+            GameObject label = Instantiate(playerLabelPrefab, this.transform, false);
             label.GetComponent<PlayerLabel>().SetupLabel(name, colour, transform);
         }
     }

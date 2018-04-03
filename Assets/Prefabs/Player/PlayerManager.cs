@@ -84,7 +84,7 @@ namespace DataVis.Collaboration
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
 
-                PhotonNetwork.playerName = "Player " + playerColourIndex;
+                PhotonNetwork.playerName = "Player " + (playerColourIndex + 1);
 
                 //PlayerHUD = GetComponent<HUDManager>();
 
