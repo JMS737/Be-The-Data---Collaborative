@@ -11,12 +11,12 @@ namespace DataVis.Collaboration
         Transform targetPlayerTransform;
         Transform localPlayerTransform;
 
-        Transform textTransfrom;
+        RectTransform textTransfrom;
 
         // Use this for initialization
         void Start()
         {
-            textTransfrom = GetComponent<Transform>();
+            textTransfrom = GetComponent<RectTransform>();
         }
 
         // Update is called once per frame
@@ -27,7 +27,7 @@ namespace DataVis.Collaboration
 
         public void SetupLabel(string name, Color colour, Transform playerTransform)
         {
-            TextMesh text = GetComponent<TextMesh>();
+            Text text = GetComponent<Text>();
             text.text = name;
             text.color = colour;
 

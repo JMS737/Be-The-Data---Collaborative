@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5697dd0ab655e314794499aa226ae62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLabelPrefab: {fileID: 1056798112408016, guid: 5ef13487bdf3e6f4b84bfef4945d01b2,
+  playerLabelPrefab: {fileID: 1403573265837614, guid: 9317710f0fc09ad4b83f12e312dd91c8,
     type: 2}
 --- !u!114 &114253129367351940
 MonoBehaviour:
@@ -1087,10 +1087,10 @@ MonoBehaviour:
   laser: {fileID: 1135756596572852}
   head: {fileID: 1701953118534262}
   playerColours:
-  - {r: 1, g: 0.80689657, b: 0, a: 0}
-  - {r: 0.12794113, g: 0.6397059, b: 0, a: 0}
-  - {r: 0, g: 0.46206903, b: 1, a: 0}
-  - {r: 0.6965513, g: 0, b: 1, a: 0}
+  - {r: 1, g: 0.80689657, b: 0, a: 1}
+  - {r: 0.12794113, g: 0.6397059, b: 0, a: 1}
+  - {r: 0, g: 0.46206903, b: 1, a: 1}
+  - {r: 0.6965513, g: 0, b: 1, a: 1}
   playerColourIndex: 0
 --- !u!114 &114849361875593202
 MonoBehaviour:
