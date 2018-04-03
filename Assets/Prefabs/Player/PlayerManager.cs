@@ -109,15 +109,21 @@ namespace DataVis.Collaboration
         {
             if (photonView.isMine)
             {
-                HUDManager playerHUD = GetComponent<HUDManager>();
-                GameObject playerObj = (GameObject)newPlayer.TagObject;
-
-                Debug.Log("HUD = " + playerHUD);
-                Debug.Log("Obj = " + playerObj);
-                playerHUD.AddPlayerLabel(newPlayer.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
+                StartCoroutine("WaitAndSetupNewPlayer", newPlayer);
             }
         }
 
+        IEnumerator WaitAndSetupNewPlayer(PhotonPlayer newPlayer)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            HUDManager playerHUD = GetComponentInChildren<HUDManager>();
+            GameObject playerObj = (GameObject)newPlayer.TagObject;
+
+            Debug.Log("HUD = " + playerHUD);
+            Debug.Log("Obj = " + playerObj);
+            playerHUD.AddPlayerLabel(newPlayer.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
+        }
 
         [PunRPC]
         public void SetColour(int colourIx)
