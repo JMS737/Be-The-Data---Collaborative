@@ -87,17 +87,25 @@ namespace DataVis.Collaboration
 
                 PhotonNetwork.playerName = "Player " + playerColourIndex;
 
-                HUDManager playerHUD = GetComponent<HUDManager>();
+                
 
-                foreach (PhotonPlayer player in PhotonNetwork.playerList)
-                {
-                    if (!player.IsLocal)
-                    {
-                        GameObject playerObj = player.TagObject as GameObject;
-                        playerHUD.AddPlayerLabel(player.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
-                    }
-                }
+                //foreach (PhotonPlayer player in PhotonNetwork.playerList)
+                //{
+                //    if (!player.IsLocal)
+                //    {
+                //        Debug.Log("Adding player " + playerColourIndex);
+                //        GameObject playerObj = player.TagObject as GameObject;
+                        
+                //    }
+                //}
             }
+        }
+
+        public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+        {
+            HUDManager playerHUD = GetComponent<HUDManager>();
+            GameObject playerObj = (GameObject)newPlayer.TagObject;
+            playerHUD.AddPlayerLabel(newPlayer.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
         }
 
         [PunRPC]
