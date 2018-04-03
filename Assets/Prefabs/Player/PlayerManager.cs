@@ -60,10 +60,7 @@ namespace DataVis.Collaboration
 
         public override void OnPhotonInstantiate(PhotonMessageInfo info)
         {
-            if (photonView.isMine)
-            {
-                PhotonNetwork.player.TagObject = this.gameObject;
-            }
+            info.sender.TagObject = this.gameObject;
         }
 
         // Use this for initialization
