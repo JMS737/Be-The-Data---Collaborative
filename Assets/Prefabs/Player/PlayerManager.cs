@@ -81,10 +81,10 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<GvrTrackedController>().enabled = true;
 
 				laser.SetActive(true);
-                PhotonNetwork.playerName = "Player " + (NextColourIndex + 1);
+
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
 
-                
+                PhotonNetwork.playerName = "Player " + (playerColourIndex + 2);
 
                 //PlayerHUD = GetComponent<HUDManager>();
 
