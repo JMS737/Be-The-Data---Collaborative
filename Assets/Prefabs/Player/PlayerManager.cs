@@ -103,17 +103,14 @@ namespace DataVis.Collaboration
         [PunRPC]
         public void AddLabel(string name)
         {
-            if (photonView.isMine)
-            {
-                HUDManager playerHUD = GetComponentInChildren<HUDManager>();
+            HUDManager playerHUD = PlayerManager.LocalPlayerInstance.GetComponentInChildren<HUDManager>();
 
-                foreach (PhotonPlayer player in PhotonNetwork.playerList)
+            foreach (PhotonPlayer player in PhotonNetwork.playerList)
+            {
+                if (name == player.NickName)
                 {
-                    if (name == player.NickName)
-                    {
-                        PlayerManager playerManager = player.TagObject as PlayerManager;
-                        playerHUD.AddPlayerLabel(name, playerManager.PlayerColour, playerManager.transform);
-                    }
+                    PlayerManager playerManager = player.TagObject as PlayerManager;
+                    playerHUD.AddPlayerLabel(name, playerManager.PlayerColour, playerManager.transform);
                 }
             }
         }
