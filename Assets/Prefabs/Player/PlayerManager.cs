@@ -58,7 +58,7 @@ namespace DataVis.Collaboration
 
         public override void OnPhotonInstantiate(PhotonMessageInfo info)
         {
-            info.sender.TagObject = this.gameObject;
+            info.sender.TagObject = this;
         }
 
         // Use this for initialization
@@ -80,8 +80,6 @@ namespace DataVis.Collaboration
 
 				laser.SetActive(true);
 
-                PhotonNetwork.player.TagObject = this;
-                
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
 
                 PhotonNetwork.player.NickName = "Player " + colourCounter;
