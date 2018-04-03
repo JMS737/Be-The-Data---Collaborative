@@ -112,13 +112,13 @@ namespace DataVis.Collaboration
 
         IEnumerator WaitAndSetupNewPlayer(PhotonPlayer newPlayer)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f);
 
             HUDManager playerHUD = GetComponentInChildren<HUDManager>();
             GameObject playerObj = (GameObject)newPlayer.TagObject;
 
-            Debug.Log("HUD = " + playerHUD);
-            Debug.Log("Obj = " + playerObj);
+            //Debug.Log("HUD = " + playerHUD);
+            //Debug.Log("Obj = " + playerObj);
             playerHUD.AddPlayerLabel(newPlayer.NickName, playerObj.GetComponent<PlayerManager>().PlayerColour, playerObj.transform);
         }
 
