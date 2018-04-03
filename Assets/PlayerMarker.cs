@@ -10,12 +10,9 @@ namespace DataVis.Collaboration
         Transform targetPlayerTransform;
         Transform localPlayerTransform;
 
-        RectTransform textTransfrom;
-
         // Use this for initialization
         void Start()
         {
-            textTransfrom = GetComponent<RectTransform>();
             localPlayerTransform = PlayerManager.LocalPlayerInstance.transform;
             targetPlayerTransform = transform.parent.transform;
         }
@@ -24,12 +21,11 @@ namespace DataVis.Collaboration
         void Update()
         {
             Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 0.1f)) - localPlayerTransform.position).normalized;
-            textTransfrom.position = localPlayerTransform.position + (direction * 1);
+            transform.position = localPlayerTransform.position + (direction * 1);
         }
 
         public void SetColour(Color colour)
         {
-
             GetComponent<Renderer>().material.SetColor("_EmissionColor", colour);
         }
     }

@@ -88,7 +88,6 @@ namespace DataVis.Collaboration
             colourCounter = colourIx;
             playerColourIndex = colourIx;
 
-            //playerColour = playerColours[colourIx];
             head.GetComponent<Renderer>().material.color = PlayerColour;
             GetComponentInChildren<PlayerMarker>().SetColour(PlayerColour);
         }
