@@ -9,20 +9,19 @@ namespace DataVis.Collaboration
     public class MoveToPlayer : MonoBehaviour
     {
 
-        private PlayerMovement_Daydream playerMovement;
+        //private PlayerMovement_Daydream playerMovement;
 
         // Use this for initialization
         void Start()
         {
-            playerMovement = GetComponent<PlayerMovement_Daydream>();
+            //playerMovement = GetComponent<PlayerMovement_Daydream>();
         }
 
-        public void OnPlayerClicked(PointerEventData data)
+        public void OnPlayerClicked()
         {
-            GameObject selectedPlayer = data.selectedObject;
-            Debug.Log(selectedPlayer);
+            PlayerMovement_Daydream playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement_Daydream>();
 
-            playerMovement.SetPosition(selectedPlayer.transform.position);
+            playerMovement.SetPosition(transform.position);
         }
     }
 }
