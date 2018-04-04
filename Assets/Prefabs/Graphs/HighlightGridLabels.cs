@@ -28,11 +28,16 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
-            playerTransform = PlayerManager.LocalPlayerInstance.transform;
+            
         }
 
         private void Update()
         {
+            if (playerTransform == null)
+            {
+                playerTransform = PlayerManager.LocalPlayerInstance.transform;
+            }
+
             if (playerTransform.position.x < transform.position.x)
             {
                 yLAxisLabelParent.SetActive(false);

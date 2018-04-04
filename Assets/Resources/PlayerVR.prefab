@@ -148,6 +148,9 @@ GameObject:
   - component: {fileID: 114127312701084326}
   - component: {fileID: 114378890420730862}
   - component: {fileID: 114140133436905426}
+  - component: {fileID: 114730617703646726}
+  - component: {fileID: 114444892828229562}
+  - component: {fileID: 114692457839992822}
   m_Layer: 0
   m_Name: PlayerVR
   m_TagString: Player
@@ -910,6 +913,17 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114444892828229562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5a3b7130ad0ae448e17ad0af63fa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114479184393838704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1127,6 +1141,36 @@ MonoBehaviour:
     touching: 0
     touchPos: {x: 0.5, y: 0.5}
   maximumAlpha: 1
+--- !u!114 &114692457839992822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114444892828229562}
+          m_MethodName: OnPlayerClicked
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114725988351616634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1160,6 +1204,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114730617703646726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ac0b5a1ef648b4da2966a460589b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
+  swipeStrength: 0.6
 --- !u!114 &114778567937670644
 MonoBehaviour:
   m_ObjectHideFlags: 1
