@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 135724453162965952}
   - component: {fileID: 23362769093659058}
   - component: {fileID: 114941855944223922}
+  - component: {fileID: 114610877632477344}
   m_Layer: 0
   m_Name: Player Marker
   m_TagString: Untagged
@@ -256,8 +257,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518526782643708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_Children: []
   m_Father: {fileID: 4381768799822274}
   m_RootOrder: 0
@@ -651,7 +652,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518526782643708}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: a25762a18c3d7584fa2c7d4ece276d4f, type: 3}
 --- !u!33 &33148666865923782
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1072,6 +1073,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d7dbe90e7164f5ba0e5e544684c98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114610877632477344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518526782643708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72d9a228b8f63142a90f89331f5969c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RPM: 50
 --- !u!114 &114611422418405672
 MonoBehaviour:
   m_ObjectHideFlags: 1
