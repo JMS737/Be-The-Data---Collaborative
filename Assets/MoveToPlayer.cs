@@ -19,6 +19,7 @@ namespace DataVis.Collaboration
 
         public void OnPlayerClicked()
         {
+            Debug.Log("I'm here");
             PlayerMovement_Daydream playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement_Daydream>();
 
             playerMovement.SetPosition(transform.position);
