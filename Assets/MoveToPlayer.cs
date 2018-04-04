@@ -17,9 +17,10 @@ namespace DataVis.Collaboration
             playerMovement = GetComponent<PlayerMovement_Daydream>();
         }
 
-        public void OnPlayerClicked(BaseEventData data)
+        public void OnPlayerClicked(PointerEventData data)
         {
             GameObject selectedPlayer = data.selectedObject;
+            Debug.Log(selectedPlayer);
 
             playerMovement.SetPosition(selectedPlayer.transform.position);
         }
