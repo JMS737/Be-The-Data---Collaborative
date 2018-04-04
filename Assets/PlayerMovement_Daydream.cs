@@ -18,6 +18,8 @@ public class PlayerMovement_Daydream : MonoBehaviour {
 
     private Transform cameraTransform;
 
+    private bool inTransit = false;
+
     // Use this for initialization
     void Start () {
         newPosition = transform.position;
@@ -42,6 +44,7 @@ public class PlayerMovement_Daydream : MonoBehaviour {
             if (distanceTo.magnitude < moveNullzone)
             {
                 newPosition = transform.position;
+                inTransit = false;
             }
         }
     }
@@ -54,7 +57,7 @@ public class PlayerMovement_Daydream : MonoBehaviour {
             firstTime = Time.time;
         }
 
-        if (GvrControllerInput.TouchUp)
+        if (GvrControllerInput.TouchUp && !inTransit)
         {
             secondTouch = GvrControllerInput.TouchPos;
             secondTime = Time.time;
@@ -89,6 +92,7 @@ public class PlayerMovement_Daydream : MonoBehaviour {
 
     public void SetPosition(Vector3 position)
     {
+        inTransit = true;
         newPosition = position;
     }
 }
