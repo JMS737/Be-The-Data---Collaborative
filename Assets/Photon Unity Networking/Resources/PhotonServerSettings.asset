@@ -48,4 +48,5 @@ MonoBehaviour:
   - RemoveHighlight
   - PUNAddHighlight
   - PUNRemoveHighlight
+  - AddLabel
   DisableAutoOpenWizard: 1

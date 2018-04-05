@@ -20,8 +20,9 @@ namespace DataVis.Collaboration
         private bool oneClick = false;
         private float firstClickTime;
 
-        private PlayerMovement playerMovement;
+        private PlayerMovement_Cardboard playerMovement;
 
+        private PlayerMarker playerMarker;
 
         // Static variable used to assign different colours to different players.
         private static int colourCounter = -1;
@@ -68,6 +69,8 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
+            playerMarker = GetComponentInChildren<PlayerMarker>();
+
 			if (photonView.isMine || !PhotonNetwork.connected)
             {
                 // Enable scripts on the camera.
@@ -75,11 +78,12 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<FlareLayer>().enabled = true;
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-                playerMovement = GetComponent<PlayerMovement>();
+                playerMovement = GetComponent<PlayerMovement_Cardboard>();
 
                 laser.SetActive(true);
 
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
+                PhotonNetwork.player.NickName = "Player " + (colourCounter + 1);
             }
         }
 
@@ -94,7 +98,6 @@ namespace DataVis.Collaboration
                     oneClick = false;
                     playerMovement.MoveForward();
                 }
-
                 else
                 {
                     // Set first click.
@@ -108,8 +111,12 @@ namespace DataVis.Collaboration
                 // Single Click
                 Debug.Log("Single click");
                 oneClick = false;
-                
             }
+        }
+
+        public void Highlight(bool IsHighlighted)
+        {
+            playerMarker.Highlight(IsHighlighted);
         }
 
         [PunRPC]
@@ -120,11 +127,9 @@ namespace DataVis.Collaboration
             colourCounter = colourIx;
             playerColourIndex = colourIx;
 
-            //playerColour = playerColours[colourIx];
             head.GetComponent<Renderer>().material.color = PlayerColour;
+            GetComponentInChildren<PlayerMarker>().SetColour(PlayerColour);
         }
-
-
     }
 }
 

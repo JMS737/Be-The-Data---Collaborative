@@ -6,6 +6,7 @@ namespace DataVis.Collaboration
 {
     public class HUDManager : MonoBehaviour
     {
+        public GameObject playerLabelPrefab;
 
         // Use this for initialization
         void Start()
