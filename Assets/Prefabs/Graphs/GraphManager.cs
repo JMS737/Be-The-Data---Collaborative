@@ -60,10 +60,12 @@ namespace DataVis.Collaboration
             //AddDataSet("data", 14, 9, 11);
             //         AddDataSet("data", 16, 9, 11);
 
-            AddDataSet("data", 4, 0, 1);
-            AddDataSet("data", 5, 0, 1);
-            AddDataSet("data", 6, 0, 1);
-            AddDataSet("data", 7, 0, 1);
+            int participantStart = GameState.ParticipantSet * 4;
+
+            AddDataSet("data", participantStart + 0, 0, 1);
+            AddDataSet("data", participantStart + 1, 0, 1);
+            AddDataSet("data", participantStart + 2, 0, 1);
+            AddDataSet("data", participantStart + 3, 0, 1);
 
 
             SetMaxGridSize();

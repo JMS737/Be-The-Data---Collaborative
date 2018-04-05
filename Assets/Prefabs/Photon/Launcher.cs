@@ -10,6 +10,8 @@ namespace DataVis.Collaboration
         public byte MaxPlayersPerRoom = 4;
         public PhotonLogLevel LogLevel = PhotonLogLevel.Informational;
 
+        public GameObject controlObj;
+        public GameObject connectingObj;
         public Text statusText;
 
         private string _gameVersion = "1.0";
@@ -26,11 +28,13 @@ namespace DataVis.Collaboration
         void Start()
         {
             statusText.text = "Connecting to server...";
-            Connect();
+            //Connect();
         }
 
         public void Connect()
         {
+            controlObj.SetActive(false);
+            connectingObj.SetActive(true);
             isConnecting = true;
             if (PhotonNetwork.connected)
             {
@@ -73,6 +77,12 @@ namespace DataVis.Collaboration
             Debug.Log("Launcher: OnJoinedRoom() called.");
 
             PhotonNetwork.LoadLevel("Main");
+        }
+
+        public void OnDatasetButtonPressed(int datasetNumber)
+        {
+            GameState.ParticipantSet = datasetNumber;
+            Connect();
         }
     }
 }

@@ -53,4 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxPlayersPerRoom: 4
   LogLevel: 0
+  controlObj: {fileID: 0}
+  connectingObj: {fileID: 0}
   statusText: {fileID: 0}
