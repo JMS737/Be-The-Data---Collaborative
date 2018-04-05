@@ -9,7 +9,7 @@ namespace DataVis.Collaboration
     {
         #region Public Attributes
 
-        public float swipeStrength = 0.2f;
+        public float swipeStrength = 0.5f;
 
         #endregion
 

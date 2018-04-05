@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414e0b5dec904e640859c1ac634aceb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeStrength: 0.2
+  swipeStrength: 0.5
 --- !u!114 &114253129367351940
 MonoBehaviour:
   m_ObjectHideFlags: 1
