@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DataVis.Collaboration
 {
+    /**
+     * Causes the highlights around the data points to pulse, to increase attention.
+     */
 	public class Pulse : MonoBehaviour {
 
 		Material material;

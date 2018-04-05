@@ -5,11 +5,6 @@ using UnityEngine;
 public class RotateScript : MonoBehaviour {
 
     public float RPM = 100;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

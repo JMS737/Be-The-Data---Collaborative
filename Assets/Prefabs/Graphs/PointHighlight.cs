@@ -7,7 +7,7 @@ namespace DataVis.Collaboration
     public class PointHighlight : Photon.PunBehaviour
     {
         // When a highlight object has been instantiated, if the local player spawned it
-        // store a reference of it in the highlight manager (so it can be destroyed later on),
+        // stores a reference of it in the highlight manager (so it can be destroyed later on),
         // and set the colour to that of the local player.
         public override void OnPhotonInstantiate(PhotonMessageInfo info)
         {

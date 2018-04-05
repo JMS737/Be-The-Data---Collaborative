@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 223096503353840654}
   - component: {fileID: 114372937516272730}
   - component: {fileID: 114273659915153564}
-  - component: {fileID: 114154359332952194}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -192,7 +191,6 @@ GameObject:
   - component: {fileID: 4646326781013764}
   - component: {fileID: 33716789588341172}
   - component: {fileID: 23531475268716444}
-  - component: {fileID: 114597348724003242}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -745,8 +743,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6eb091dc2296de4ca0d41f3fbbb64c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
+  cameraMoving: 0
   playerMoving: 0
   moveStrength: 0.5
+  selectedDataPoint: {fileID: 0}
+  playerCollider: {fileID: 0}
+  isScrolling: 0
+  prevTouch: {x: 0, y: 0}
+  prevTouchtime: 0
+  currentTouch: {x: 0, y: 0}
+  touchDelta: {x: 0, y: 0}
+  overallVelocity: {x: 0, y: 0}
 --- !u!114 &114127312701084326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -786,19 +794,6 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &114154359332952194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1151532504878322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5697dd0ab655e314794499aa226ae62a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLabelPrefab: {fileID: 1403573265837614, guid: 9317710f0fc09ad4b83f12e312dd91c8,
-    type: 2}
 --- !u!114 &114154492632598816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,17 +1109,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114597348724003242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1701953118534262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d7dbe90e7164f5ba0e5e544684c98f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114611422418405672
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,7 +10,6 @@ namespace DataVis.Collaboration
         public float MoveDistance = 0.1f;
 
         private Transform cameraTransform;
-
         private PlayerMovement playerMovement;
 
         // Use this for initialization
@@ -35,7 +34,7 @@ namespace DataVis.Collaboration
             float hAxis = Input.GetAxis("Horizontal");
             float vAxis = Input.GetAxis("Vertical");
 
-            Vector3 moveVector = new Vector3(hAxis, 0.0f, -vAxis);
+            Vector3 moveVector = new Vector3(hAxis, 0.0f, vAxis);
 
             if (moveVector != Vector3.zero)
             {
@@ -50,7 +49,7 @@ namespace DataVis.Collaboration
 
             // Generate forward/backward and right/left components of the move relative to
             // the player's orientation.
-            Vector3 forwardComponent = cameraTransform.forward * -deltaMove.z;
+            Vector3 forwardComponent = cameraTransform.forward * deltaMove.z;
             Vector3 rightComponent = cameraTransform.right * deltaMove.x;
 
             deltaMove = forwardComponent + rightComponent;
