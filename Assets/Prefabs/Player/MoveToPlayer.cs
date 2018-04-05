@@ -17,8 +17,6 @@ namespace DataVis.Collaboration
 
         public void OnPlayerClicked()
         {
-            //PlayerMovement playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement>();
-
             playerMovement.MoveTo(transform.position, false);
         }
     }
