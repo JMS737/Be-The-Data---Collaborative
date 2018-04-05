@@ -5,14 +5,21 @@ using UnityEngine.EventSystems;
 
 namespace DataVis.Collaboration
 {
-    [RequireComponent(typeof(PlayerMovement_Cardboard))]
+    [RequireComponent(typeof(PlayerMovement))]
     public class MoveToPlayer : MonoBehaviour
     {
+        private PlayerMovement playerMovement;
+
+        private void Start()
+        {
+            playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement>();
+        }
+
         public void OnPlayerClicked()
         {
-            PlayerMovement_Cardboard playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement_Cardboard>();
+            //PlayerMovement playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement>();
 
-            playerMovement.SetPosition(transform.position);
+            playerMovement.MoveTo(transform.position, false);
         }
     }
 }

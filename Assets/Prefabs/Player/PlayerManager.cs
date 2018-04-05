@@ -14,14 +14,6 @@ namespace DataVis.Collaboration
 
         public List<Color> playerColours;
 
-        [Range(0f, 1f)]
-        public float doubleClickTime = 0.25f;
-
-        private bool oneClick = false;
-        private float firstClickTime;
-
-        private PlayerMovement_Cardboard playerMovement;
-
         private PlayerMarker playerMarker;
 
         // Static variable used to assign different colours to different players.
@@ -78,7 +70,12 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<FlareLayer>().enabled = true;
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-                playerMovement = GetComponent<PlayerMovement_Cardboard>();
+                GetComponent<PlayerMovement>().enabled = true;
+
+                // Enable scripts on the controller.
+
+                GetComponentInChildren<GvrArmModel>().enabled = true;
+                GetComponentInChildren<GvrTrackedController>().enabled = true;
 
                 laser.SetActive(true);
 
@@ -89,29 +86,7 @@ namespace DataVis.Collaboration
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                if (oneClick && (Time.time - firstClickTime) <= doubleClickTime)
-                {
-                    // Double click
-                    Debug.Log("Double click");
-                    oneClick = false;
-                    playerMovement.MoveForward();
-                }
-                else
-                {
-                    // Set first click.
-                    oneClick = true;
-                    firstClickTime = Time.time;
-                }
-            }
-
-            if (oneClick && (Time.time - firstClickTime) > doubleClickTime)
-            {
-                // Single Click
-                Debug.Log("Single click");
-                oneClick = false;
-            }
+            
         }
 
         public void Highlight(bool IsHighlighted)
