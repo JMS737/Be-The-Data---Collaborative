@@ -14,6 +14,8 @@ namespace DataVis.Collaboration
 
         public List<Color> playerColours;
 
+        private PlayerMarker playerMarker;
+
         // Static variable used to assign different colours to different players.
         private static int colourCounter = -1;
 
@@ -59,6 +61,8 @@ namespace DataVis.Collaboration
         // Use this for initialization
         void Start()
         {
+            playerMarker = GetComponentInChildren<PlayerMarker>();
+
 			if (photonView.isMine || !PhotonNetwork.connected)
             {
                 // Enable scripts on the camera.
@@ -78,6 +82,11 @@ namespace DataVis.Collaboration
                 photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
                 PhotonNetwork.player.NickName = "Player " + (colourCounter + 1);
             }
+        }
+
+        public void Highlight(bool IsHighlighted)
+        {
+            playerMarker.Highlight(IsHighlighted);
         }
 
         [PunRPC]

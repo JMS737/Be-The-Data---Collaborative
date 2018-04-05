@@ -43,7 +43,7 @@ public class PlayerMovement_Daydream : MonoBehaviour {
             transform.position += change;
             if (distanceTo.magnitude < moveNullzone)
             {
-                newPosition = transform.position;
+                transform.position = newPosition;
                 inTransit = false;
             }
         }

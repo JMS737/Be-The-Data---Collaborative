@@ -145,12 +145,12 @@ GameObject:
   - component: {fileID: 4381768799822274}
   - component: {fileID: 136851209477396866}
   - component: {fileID: 114778567937670644}
-  - component: {fileID: 114127312701084326}
-  - component: {fileID: 114378890420730862}
-  - component: {fileID: 114140133436905426}
   - component: {fileID: 114730617703646726}
   - component: {fileID: 114444892828229562}
+  - component: {fileID: 114127312701084326}
   - component: {fileID: 114692457839992822}
+  - component: {fileID: 114140133436905426}
+  - component: {fileID: 114378890420730862}
   m_Layer: 0
   m_Name: PlayerVR
   m_TagString: Player
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4081534078629562}
   - component: {fileID: 33018645883251468}
-  - component: {fileID: 135724453162965952}
+  - component: {fileID: 65900511275819094}
   - component: {fileID: 23362769093659058}
   - component: {fileID: 114941855944223922}
   - component: {fileID: 114610877632477344}
@@ -423,7 +423,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.15
+  near clip plane: 0.175
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -691,6 +691,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744977428232934}
   m_Mesh: {fileID: 4300000, guid: 7f7d22eda15de8b4b85cdd42966a681a, type: 3}
+--- !u!65 &65900511275819094
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518526782643708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1, y: 2.1, z: 2.1}
+  m_Center: {x: 0, y: 1.055709, z: 0}
 --- !u!81 &81174078093800578
 AudioListener:
   m_ObjectHideFlags: 1
@@ -1170,6 +1182,40 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114778567937670644}
+          m_MethodName: Highlight
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114778567937670644}
+          m_MethodName: Highlight
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!114 &114725988351616634
 MonoBehaviour:
@@ -1315,6 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee27f3583f5ab384a9898fd56017945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightScale: 1.25
 --- !u!114 &114977886636231820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1431,18 +1478,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651403639503044}
   m_Enabled: 0
---- !u!135 &135724453162965952
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1518526782643708}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136851209477396866
 CapsuleCollider:
   m_ObjectHideFlags: 1

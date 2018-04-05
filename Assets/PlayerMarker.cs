@@ -6,16 +6,20 @@ namespace DataVis.Collaboration
 {
     public class PlayerMarker : MonoBehaviour
     {
+        public float highlightScale = 1.25f;
 
         Transform targetPlayerTransform;
         Transform localPlayerTransform;
-        Vector3 scale;
+
+        Vector3 originalScale;
+
+        private float additionalScale = 1.0f;
 
         // Use this for initialization
         void Start()
         {
             targetPlayerTransform = transform.parent.transform;
-            scale = transform.localScale;
+            originalScale = transform.localScale;
         }
 
         // Update is called once per frame
@@ -27,16 +31,26 @@ namespace DataVis.Collaboration
             }
             else
             {
-                //Vector3 direction = ((targetPlayerTransform.position + (Vector3.up * 0.3f)) - localPlayerTransform.position).normalized;
-                //transform.position = localPlayerTransform.position + (direction * 1);
                 float distance = (targetPlayerTransform.position - localPlayerTransform.position).magnitude;
-                transform.localScale = scale * distance;
+                transform.localScale = originalScale * distance * additionalScale;
             }
         }
 
         public void SetColour(Color colour)
         {
             GetComponent<Renderer>().material.SetColor("_EmissionColor", colour);
+        }
+
+        public void Highlight(bool IsHighlighted)
+        {
+            if (IsHighlighted)
+            {
+                additionalScale = highlightScale;
+            }
+            else
+            {
+                additionalScale = 1.0f;
+            }
         }
     }
 
