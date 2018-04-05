@@ -70,7 +70,7 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<FlareLayer>().enabled = true;
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-                GetComponent<PlayerMovement_Daydream>().enabled = true;
+                GetComponent<PlayerMovement>().enabled = true;
 
                 // Enable scripts on the controller.
 
