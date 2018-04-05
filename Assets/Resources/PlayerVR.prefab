@@ -146,6 +146,8 @@ GameObject:
   - component: {fileID: 136851209477396866}
   - component: {fileID: 114778567937670644}
   - component: {fileID: 114730617703646726}
+  - component: {fileID: 114245433027273392}
+  - component: {fileID: 114620627730182898}
   - component: {fileID: 114444892828229562}
   - component: {fileID: 114127312701084326}
   - component: {fileID: 114692457839992822}
@@ -809,6 +811,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightScale: 1.25
+--- !u!114 &114245433027273392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414e0b5dec904e640859c1ac634aceb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeStrength: 0.2
 --- !u!114 &114253129367351940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,6 +1167,18 @@ MonoBehaviour:
     touching: 0
     touchPos: {x: 0.5, y: 0.5}
   maximumAlpha: 1
+--- !u!114 &114620627730182898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f72c09d79c6d24ba53aec7617faf20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveDistance: 0.1
 --- !u!114 &114692457839992822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1256,13 +1282,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514580070091454}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7ac0b5a1ef648b4da2966a460589b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7.5
-  swipeStrength: 0.5
 --- !u!114 &114778567937670644
 MonoBehaviour:
   m_ObjectHideFlags: 1
