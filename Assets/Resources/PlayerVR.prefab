@@ -182,7 +182,9 @@ GameObject:
   - component: {fileID: 4381768799822274}
   - component: {fileID: 136851209477396866}
   - component: {fileID: 114778567937670644}
-  - component: {fileID: 114679703345515602}
+  - component: {fileID: 114082652227135104}
+  - component: {fileID: 114097481732352372}
+  - component: {fileID: 114601215923452670}
   - component: {fileID: 114700286967752942}
   - component: {fileID: 114127312701084326}
   - component: {fileID: 114840727156234388}
@@ -814,6 +816,31 @@ MonoBehaviour:
   tooltipMinDistanceFromFace: 0.45
   tooltipMaxAngleFromCamera: 80
   isLockedToNeck: 0
+--- !u!114 &114082652227135104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ac0b5a1ef648b4da2966a460589b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 7.5
+--- !u!114 &114097481732352372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e91be1093a0aa479430d8e04ce5caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementStep: 5
+  doubleClickTime: 0.25
 --- !u!114 &114127312701084326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1156,6 +1183,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d7dbe90e7164f5ba0e5e544684c98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114601215923452670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514580070091454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f72c09d79c6d24ba53aec7617faf20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveDistance: 0.1
 --- !u!114 &114611422418405672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1198,19 +1237,6 @@ MonoBehaviour:
     touching: 0
     touchPos: {x: 0.5, y: 0.5}
   maximumAlpha: 1
---- !u!114 &114679703345515602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1514580070091454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9092b385c10df44458e7e895b584b6d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MovementStep: 5
-  moveSpeed: 7.5
 --- !u!114 &114700286967752942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1297,7 +1323,6 @@ MonoBehaviour:
   - {r: 0.12794113, g: 0.6397059, b: 0, a: 0}
   - {r: 0, g: 0.46206903, b: 1, a: 0}
   - {r: 0.6965513, g: 0, b: 1, a: 0}
-  doubleClickTime: 0.25
   playerColourIndex: 0
 --- !u!114 &114840727156234388
 MonoBehaviour:
