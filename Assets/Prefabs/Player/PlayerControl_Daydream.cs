@@ -7,7 +7,13 @@ namespace DataVis.Collaboration
     [RequireComponent(typeof(PlayerMovement))]
     public class PlayerControl_Daydream : Photon.PunBehaviour
     {
-        public float swipeStrength = 0.2f;
+        #region Public Attributes
+
+        public float swipeStrength = 0.5f;
+
+        #endregion
+
+        #region Private Attributes
 
         // Input variables
         private Vector2 firstTouch, secondTouch, deltaTouch;
@@ -16,6 +22,10 @@ namespace DataVis.Collaboration
         private Transform cameraTransform;
 
         private PlayerMovement playerMovement;
+
+        #endregion
+
+        #region Unity Methods
 
         // Use this for initialization
         void Start()
@@ -33,6 +43,10 @@ namespace DataVis.Collaboration
                 HandleInput();
             }
         }
+
+        #endregion
+
+        #region Private Methods
 
         // Detects when the user touches and releases the touchpad on the GVR Controller
         // and uses this to determine when the user performs a swipe.
@@ -85,6 +99,8 @@ namespace DataVis.Collaboration
 
             return transform.position + deltaMove;
         }
+
+        #endregion
     }
 }
 

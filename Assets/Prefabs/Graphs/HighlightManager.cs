@@ -14,7 +14,7 @@ namespace DataVis.Collaboration
         // Instantiates a highlight object on all client machines.
         //
         // Note: Colour and a reference to the gameobject are dealt with in the
-        // PointHighlight script.
+        // PointHighlight script, once the object has been created.
         public void AddHighlight(Vector3 point)
         {
             PhotonNetwork.Instantiate(highlightPrefab.name, point, Quaternion.identity, 0);
@@ -33,6 +33,7 @@ namespace DataVis.Collaboration
 
         // Provides the ability to add a reference to a highlight gameobject from
         // the PointHighlight script.
+        // This allows us to destroy them at a later date.
         public void AddReference(Vector3 point, GameObject highlight)
         {
             highlightedPoints.Add(point, highlight);

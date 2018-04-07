@@ -6,7 +6,10 @@ namespace DataVis.Collaboration
 {
     public class PlayerManager : Photon.PunBehaviour
     {
+        #region Public Attributes
+
         public static GameObject LocalPlayerInstance;
+
         public GameObject laser;
 
         [Tooltip("This object will have its material colour set to that of the assigned player colour.")]
@@ -14,10 +17,18 @@ namespace DataVis.Collaboration
 
         public List<Color> playerColours;
 
+        #endregion
+
+        #region Private Attributes
+
         private PlayerMarker playerMarker;
 
         // Static variable used to assign different colours to different players.
         private static int colourCounter = -1;
+
+        #endregion
+
+        #region Accessor Variables
 
         public int NextColourIndex
         {
@@ -34,6 +45,7 @@ namespace DataVis.Collaboration
             }
         }
 
+        [HideInInspector]
         public int playerColourIndex;
 
         public Color PlayerColour
@@ -44,7 +56,9 @@ namespace DataVis.Collaboration
             }
         }
 
-		// TODO: Use RPCs to add/remove highlights (e.g. specify a position and a colour)
+        #endregion
+
+        #region Unity Methods
 
         private void Awake()
         {
@@ -63,6 +77,7 @@ namespace DataVis.Collaboration
         {
             playerMarker = GetComponentInChildren<PlayerMarker>();
 
+            // Enable certain player functionality for the local player only.
 			if (photonView.isMine || !PhotonNetwork.connected)
             {
                 // Enable scripts on the camera.
@@ -70,10 +85,8 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<FlareLayer>().enabled = true;
                 GetComponentInChildren<AudioListener>().enabled = true;
                 GetComponentInChildren<GvrPointerPhysicsRaycaster>().enabled = true;
-                GetComponent<PlayerMovement>().enabled = true;
 
                 // Enable scripts on the controller.
-
                 GetComponentInChildren<GvrArmModel>().enabled = true;
                 GetComponentInChildren<GvrTrackedController>().enabled = true;
 
@@ -84,16 +97,21 @@ namespace DataVis.Collaboration
             }
         }
 
-        private void Update()
-        {
-            
-        }
+        #endregion
 
+        #region Public Methods
+
+        // Called when the pointed enters/exits any of the players colliders.
         public void Highlight(bool IsHighlighted)
         {
             playerMarker.Highlight(IsHighlighted);
         }
 
+        #endregion
+
+        #region Photon Methods
+
+        // A network call which allows player colours to be synchronised.
         [PunRPC]
         public void SetColour(int colourIx)
         {
@@ -105,6 +123,8 @@ namespace DataVis.Collaboration
             head.GetComponent<Renderer>().material.color = PlayerColour;
             GetComponentInChildren<PlayerMarker>().SetColour(PlayerColour);
         }
+
+        #endregion
     }
 }
 

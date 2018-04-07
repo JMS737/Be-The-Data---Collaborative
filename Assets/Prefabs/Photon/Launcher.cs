@@ -24,15 +24,9 @@ namespace DataVis.Collaboration
             PhotonNetwork.logLevel = LogLevel;
         }
 
-        // Use this for initialization
-        void Start()
-        {
-            statusText.text = "Connecting to server...";
-            //Connect();
-        }
-
         public void Connect()
         {
+            statusText.text = "Connecting to server...";
             controlObj.SetActive(false);
             connectingObj.SetActive(true);
             isConnecting = true;

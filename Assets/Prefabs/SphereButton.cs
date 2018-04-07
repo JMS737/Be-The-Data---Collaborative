@@ -2,41 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SphereButton : MonoBehaviour {
-
-    public float enlargeFactor = 1.25f;
-
-    Vector3 originalScale;
-
-	// Use this for initialization
-	void Start () {
-        originalScale = transform.localScale;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    private void Highlight(bool isHighlighted)
+namespace DataVis.Collaboration
+{
+    public class SphereButton : MonoBehaviour
     {
-        if (isHighlighted)
+        public float highlightScaleFactor = 1.25f;
+
+        private Vector3 originalScale;
+
+        // Use this for initialization
+        void Start()
         {
-            transform.localScale = originalScale * enlargeFactor;
+            originalScale = transform.localScale;
         }
-        else
+
+        // If isHighlighted, scales the attached object by the highlightScaleFactor.
+        private void Highlight(bool isHighlighted)
         {
-            transform.localScale = originalScale;
+            if (isHighlighted)
+            {
+                transform.localScale = originalScale * highlightScaleFactor;
+            }
+            else
+            {
+                transform.localScale = originalScale;
+            }
         }
-    }
 
-    public void OnPointerEnter()
-    {
-        Highlight(true);
-    }
+        public void OnPointerEnter()
+        {
+            Highlight(true);
+        }
 
-    public void OnPointerExit()
-    {
-        Highlight(false);
+        public void OnPointerExit()
+        {
+            Highlight(false);
+        }
     }
 }

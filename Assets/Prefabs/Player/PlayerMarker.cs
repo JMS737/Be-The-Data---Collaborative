@@ -4,15 +4,21 @@ using UnityEngine;
 
 namespace DataVis.Collaboration
 {
+    /**
+     * This script is used to scale the marker above the player so that
+     * it remains a constant size to the local player.
+     * This makes identifying players in the world easier.
+     */
     public class PlayerMarker : MonoBehaviour
     {
         public float highlightScale = 1.25f;
 
-        Transform targetPlayerTransform;
-        Transform localPlayerTransform;
+        private Transform targetPlayerTransform;
+        private Transform localPlayerTransform;
 
-        Vector3 originalScale;
+        private Vector3 originalScale;
 
+        // Values used to apply other scale factors, such as when highlighted.
         private float additionalScale = 1.0f;
 
         // Use this for initialization
@@ -25,13 +31,16 @@ namespace DataVis.Collaboration
         // Update is called once per frame
         void Update()
         {
+            // Due to load times this did not work in the 'Start' method.
             if (localPlayerTransform == null)
             {
                 localPlayerTransform = PlayerManager.LocalPlayerInstance.transform;
             }
             else
             {
+                // Scale the object based on the players distance to the local player.
                 float distance = (targetPlayerTransform.position - localPlayerTransform.position).magnitude;
+
                 transform.localScale = originalScale * distance * additionalScale;
             }
         }
