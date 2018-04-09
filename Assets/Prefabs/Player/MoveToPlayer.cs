@@ -10,9 +10,12 @@ namespace DataVis.Collaboration
     {
         private PlayerMovement playerMovement;
 
-        private void Start()
+        private void Update()
         {
-            playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement>();
+            if (playerMovement == null)
+            {
+                playerMovement = PlayerManager.LocalPlayerInstance.GetComponent<PlayerMovement>();
+            }
         }
 
         public void OnPlayerClicked()
