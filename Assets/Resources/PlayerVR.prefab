@@ -790,7 +790,7 @@ MonoBehaviour:
   raycastMode: 0
   overridePointerCamera: {fileID: 0}
   drawDebugRays: 0
-  maxReticleDistance: 10
+  maxReticleDistance: 100
   reticleSegments: 20
   reticleGrowthSpeed: 8
   reticleSortingOrder: 32767
