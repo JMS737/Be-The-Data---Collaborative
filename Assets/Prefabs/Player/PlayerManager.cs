@@ -90,7 +90,7 @@ namespace DataVis.Collaboration
                 GetComponentInChildren<GvrArmModel>().enabled = true;
                 GetComponentInChildren<GvrTrackedController>().enabled = true;
 
-				laser.SetActive(true);
+                laser.SetActive(true);
 
                 if (PhotonNetwork.connected)
                 {
