@@ -13,7 +13,7 @@ namespace DataVis.Collaboration
         #region Public Attributes
 
         [Range(1, 10)]
-        public float moveSpeed = 3.0f;
+        public float moveSpeed = 7.5f;
 
         #endregion
 
