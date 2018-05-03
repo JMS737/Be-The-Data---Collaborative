@@ -56,3 +56,6 @@ MonoBehaviour:
   controlObj: {fileID: 0}
   connectingObj: {fileID: 0}
   statusText: {fileID: 0}
+  platform: 0
+  controllerObject: {fileID: 0}
+  reticleObject: {fileID: 0}

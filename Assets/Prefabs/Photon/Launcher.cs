@@ -14,6 +14,11 @@ namespace DataVis.Collaboration
         public GameObject connectingObj;
         public Text statusText;
 
+        public Platform platform;
+
+        public GameObject controllerObject;
+        public GameObject reticleObject;
+
         private string _gameVersion = "1.0";
         private bool isConnecting;
 
@@ -22,9 +27,28 @@ namespace DataVis.Collaboration
             PhotonNetwork.autoJoinLobby = false;
             PhotonNetwork.automaticallySyncScene = true;
             PhotonNetwork.logLevel = LogLevel;
+
+            switch (platform)
+            {
+                case Platform.GoogleCardboard:
+                    controllerObject.SetActive(false);
+                    Debug.Log("Disabling daydream");
+                    break;
+
+                case Platform.GoogleDaydream:
+                    Debug.Log("Disabling cardboard");
+                    reticleObject.SetActive(false);
+                    reticleObject.GetComponent<GvrReticlePointer>().enabled = false;
+                    break;
+            }
         }
 
-        public void Connect()
+		private void Start()
+		{
+            
+		}
+
+		public void Connect()
         {
             statusText.text = "Connecting to server...";
             controlObj.SetActive(false);
