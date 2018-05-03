@@ -5,16 +5,36 @@ using UnityEngine.SceneManagement;
 
 namespace DataVis.Collaboration
 {
+    public enum Platform
+    {
+        GoogleDaydream,
+        GoogleCardboard
+    }
+
     public class GameManager : Photon.PunBehaviour
     {
-        public GameObject playerPrefab;
+        
+        //public GameObject playerPrefab;
+        public Platform platform;
+
+        private string playerPrefabName;
 
         [Tooltip("The graph object the player should spawn by.")]
         public GraphManager graphManager;
 
         private void Start()
         {
-			
+            playerPrefabName = "";
+
+            switch (platform){
+                case Platform.GoogleCardboard:
+                    playerPrefabName = "PlayerVR_Cardboard";
+                    break;
+
+                case Platform.GoogleDaydream:
+                    playerPrefabName = "PlayerVR_Daydream";
+                    break;
+            }
             StartCoroutine("WaitAndSpawn");
         }
 
@@ -23,7 +43,7 @@ namespace DataVis.Collaboration
         IEnumerator WaitAndSpawn()
         {
             yield return new WaitForSeconds(0.05f);
-            if (playerPrefab == null)
+            if (playerPrefabName == "")
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference.");
             }
@@ -34,12 +54,12 @@ namespace DataVis.Collaboration
                 {
                     Debug.Log("Instantiating Local Player...");
                     
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, spawnPoint, Quaternion.identity, 0);
+                    PhotonNetwork.Instantiate(playerPrefabName, spawnPoint, Quaternion.identity, 0);
                 }
                 else
                 {
                     Debug.Log("Ignoring scene load.");
-					Instantiate (playerPrefab, spawnPoint, Quaternion.identity);
+                    Instantiate (Resources.Load(playerPrefabName), spawnPoint, Quaternion.identity);
                 }
             }
         }

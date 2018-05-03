@@ -92,8 +92,11 @@ namespace DataVis.Collaboration
 
 				laser.SetActive(true);
 
-                photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
-                PhotonNetwork.player.NickName = "Player " + (colourCounter + 1);
+                if (PhotonNetwork.connected)
+                {
+                    photonView.RPC("SetColour", PhotonTargets.AllBufferedViaServer, NextColourIndex);
+                    PhotonNetwork.player.NickName = "Player " + (colourCounter + 1);
+                }
             }
         }
 

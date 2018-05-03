@@ -23,7 +23,7 @@ namespace DataVis.Collaboration
         void Update()
         {
             // Only handle input for the local player.
-            if (photonView.isMine)
+            if (photonView.isMine || !PhotonNetwork.connected)
             {
                 HandleInput();
             }

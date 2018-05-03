@@ -40,7 +40,7 @@ namespace DataVis.Collaboration
 	    void Update () {
             // Only handle movement for the local player.
             // Note: Remote players are moved using the PhotonTransformView script.
-            if (photonView.isMine)
+            if (photonView.isMine || !PhotonNetwork.connected)
             {
                 HandleMovementForFrame();
             }
