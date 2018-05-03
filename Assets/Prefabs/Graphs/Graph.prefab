@@ -2103,10 +2103,10 @@ MonoBehaviour:
   dataSetPrefab: {fileID: 1402656214003882, guid: 59707d88fca5ff44284ccc2bd94a23ec,
     type: 2}
   dataPointPrefabs:
-  - {fileID: 1390490903853288, guid: efb6553eb8ea8244ebdc7a9847a5dae2, type: 2}
-  - {fileID: 1390490903853288, guid: 5a4d096829e796442a86b1158fe2a04b, type: 2}
-  - {fileID: 1390490903853288, guid: 7733dc6c7d4150f4bb25724477a99506, type: 2}
-  - {fileID: 1390490903853288, guid: 352d845359d62c74fb84d9beb1fe35e2, type: 2}
+  - {fileID: 1131894251501358, guid: e8b6229d4595ca44d85800e84b7ed09a, type: 2}
+  - {fileID: 1131894251501358, guid: 387dc2f3fce244450bf03d3beafa4422, type: 2}
+  - {fileID: 1131894251501358, guid: 081099ae2234f47d984866f7799ddb16, type: 2}
+  - {fileID: 1131894251501358, guid: da004dd2660fd4741b67846237c7127b, type: 2}
 --- !u!114 &114878616023946598
 MonoBehaviour:
   m_ObjectHideFlags: 1
